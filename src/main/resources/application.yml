@@ -1,0 +1,20 @@
+
+spring:
+  application:
+    name: visiteSystem # ”¶”√√˚≥∆
+  datasource:
+    url: jdbc:mysql://localhost:3306/visite_system?characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&autoReconnect=true&failOverReadOnly=false&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: 13914782259tyz
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:/mapper/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+server:
+  port: 90
