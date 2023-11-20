@@ -23,7 +23,7 @@ CREATE TABLE `car_long_record`  (
   `go_time` datetime NULL COMMENT '离开时间',
   `examine_id` bigint NULL COMMENT '部门班长id',
   `examine_result` int NULL COMMENT '部门班长审核结果',
-  `banan_id` bigint NULL COMMENT '保安id',
+  `baoan_id` bigint NULL COMMENT '保安id',
   `baoan_result` int NULL COMMENT '保安审核结果',
   `picture` varchar(255) NULL COMMENT '货物照片',
   PRIMARY KEY (`id`)
@@ -78,6 +78,9 @@ CREATE TABLE `user`  (
   `carnum` char(7) NULL COMMENT '车牌号',
   `type` int NOT NULL DEFAULT 0 COMMENT '0-普通访客\r\n1-VIP，行政访客\r\n2-物流司机，长期\r\n3-物流司机，临时\r\n4-施工人员',
   `company` varchar(255) NULL COMMENT '所属公司',
+  `password` varchar(255) NULL COMMENT '密码',
+  `is_employee` int NULL COMMENT '是否为内部人员 0-是 1-否',
+  `dept_id` bigint NULL COMMENT '内部人员所属的部门id',
   PRIMARY KEY (`id`)
 ) COMMENT = '用户表';
 
