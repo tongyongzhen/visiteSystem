@@ -1,5 +1,15 @@
 
 spring:
+  redis:
+    database: 3
+    host: localhost
+    port: 6379
+    password:
+    pool:
+    max-active: 8
+    max-idle: 8
+    min-idle: 0
+    max-wait: -1
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

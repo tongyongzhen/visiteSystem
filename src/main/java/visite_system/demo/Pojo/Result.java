@@ -21,7 +21,7 @@ public class Result {
     }
     public static Result fail(int code, String msg){
         Result result = new Result();
-        result.setData(code);
+        result.setCode(code);
         result.setMsg(msg);
         return result;
     }
