@@ -1,0 +1,97 @@
+<template>
+	<view>
+		<view class="a"><h1>审批</h1></view>
+		<view class="b">
+		    <uni-section title="用户" type="line">
+		      <uni-data-select
+		        v-model="value"
+		        :localdata="range1"
+		        @change="change"
+		      ></uni-data-select>
+		    </uni-section>
+			<view class="c">
+				<view>
+				<uni-section
+				  title="提示所属公司,
+				  车牌号,
+				  拜访空间"
+				  subTitle=""
+				  type="line"
+				> 
+				</uni-section></view>
+				<view ><button type="primary" class="button" @click="">同意</button></view>
+				<view ><button type="primary" class="button" @click="">拒绝</button></view>
+			</view>
+			
+		    <uni-section title="提示所属公司,车牌号,拜访空间" type="line">
+		      <uni-data-select
+		        v-model="value"
+		        :localdata="range2"
+		        @change="change"
+		        :clear="false"
+		      ></uni-data-select>
+		    </uni-section>
+		    <uni-section title="提示所属公司,车牌号,拜访空间" type="line">
+		      <uni-data-select
+		        v-model="value"
+		        :localdata="range3"
+		        @change="change"
+		        label="应用选择"
+		      ></uni-data-select>
+		    </uni-section>
+		  </view>
+	</view>
+</template>
+
+<script>
+	export default {
+    data() {
+      return {
+        value: 0,
+        range1: [
+		  { value: 0, text: "请选择"},
+          { value: 1, text: "篮球" },
+          { value: 2, text: "足球" },
+          { value: 3, text: "游泳" },
+        ],
+		range2: [
+		  { value: 0, text: "请选择"},
+		  { value: 1, text: "篮球" },
+		  { value: 2, text: "足球" },
+		  { value: 3, text: "游泳" },
+		],
+		range3: [
+		  { value: 0, text: "请选择"},
+		  { value: 1, text: "篮球" },
+		  { value: 2, text: "足球" },
+		  { value: 3, text: "游泳" },
+		],
+      };
+    },
+    methods: {
+      change(e) {
+        console.log("e:", e);
+      },
+    },
+  };
+</script>
+
+<style>
+	.a{
+		color: seagreen;
+		text-align: center;
+		margin-top: 20px;
+	}
+	.b{
+		margin-top: 20px;
+	}
+	.c{
+		display: flex;
+		justify-content: space-between;
+	}
+	.button{
+		margin-top: 20px;
+		background-color: white;
+		color: black;
+	}
+</style>
