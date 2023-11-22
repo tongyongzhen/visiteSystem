@@ -1,5 +1,4 @@
 package visite_system.demo.Entity;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -9,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
 
 @Builder
 @Data
@@ -21,7 +22,9 @@ public class User {
     @ApiModelProperty("id")
     private Long id;
     @ApiModelProperty("姓名")
+    @NotBlank
     private String name;
+    @NotBlank
     @ApiModelProperty("手机号")
     private String phone;
     @ApiModelProperty("车牌号")
@@ -31,6 +34,7 @@ public class User {
     @ApiModelProperty("所属公司")
     private String company;
     @ApiModelProperty("密码")
+    @NotBlank
     private String password;
     @ApiModelProperty(value = "是否是内部人员 0-是，1-不是")
     private int isEmployee;

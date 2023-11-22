@@ -1,6 +1,7 @@
 package visite_system.demo.Service.Impl;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class Login_RegisterServiceImpl implements Login_RegisterService {
+public class Login_RegisterServiceImpl extends ServiceImpl<Login_RegisterMapper,User> implements Login_RegisterService {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
     @Autowired

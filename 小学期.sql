@@ -38,10 +38,10 @@ CREATE TABLE `car_short_appointment`  (
 ) COMMENT = '临时物流人员预约表';
 
 CREATE TABLE `common_appointment`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `user_id` int NULL COMMENT '用户id',
-  `visite_dept_id` int NULL COMMENT '访问的部门id',
-  `visite_employee_id` int NULL COMMENT '被访问人id',
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `user_id` bigint NULL COMMENT '用户id',
+  `visite_dept_id` bigint NULL COMMENT '访问的部门id',
+  `visite_employee_id` bigint NULL COMMENT '被访问人id',
   `visite_start_time` datetime NULL COMMENT '访问开始时间',
   `visite_end_time` datetime NULL COMMENT '访问结束时间',
   `isagree` int NULL DEFAULT -1 COMMENT '是否同意\r\n0-同意\r\n1-不同意\r\n-1 -未确认',
@@ -79,7 +79,7 @@ CREATE TABLE `user`  (
   `type` int NOT NULL DEFAULT 0 COMMENT '0-普通访客\r\n1-VIP，行政访客\r\n2-物流司机，长期\r\n3-物流司机，临时\r\n4-施工人员',
   `company` varchar(255) NULL COMMENT '所属公司',
   `password` varchar(255) NULL COMMENT '密码',
-  `is_employee` int NULL COMMENT '是否为内部人员 0-是 1-否',
+  `is_employee` int NULL DEFAULT 1 COMMENT '是否为内部人员 0-是 1-否',
   `dept_id` bigint NULL COMMENT '内部人员所属的部门id',
   PRIMARY KEY (`id`)
 ) COMMENT = '用户表';
@@ -93,7 +93,7 @@ CREATE TABLE `vip_appointment`  (
 
 CREATE TABLE `vip_examine`  (
   `id` int NOT NULL COMMENT 'id',
-  `appointment_id` int NULL COMMENT '预约id',
+  `appointment_id` bigint NULL COMMENT '预约id',
   `visite_dept_opinion` int NULL COMMENT '申请部门意见 0-同意 1-不同意',
   `renshi_opinion` int NULL COMMENT '人事部门意见 0-同意 1-不同意',
   `manage_opinion` int NULL COMMENT '总经理意见 0-同意 1-不同意',

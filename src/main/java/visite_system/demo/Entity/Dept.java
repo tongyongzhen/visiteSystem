@@ -20,9 +20,9 @@ import lombok.NoArgsConstructor;
 public class Dept {
     @TableId(type = IdType.AUTO)
     @ApiModelProperty("部门id")
-    private Long dept_id;
+    private Long deptId;
     @ApiModelProperty("部门名称")
-    private String dept_name;
+    private String deptName;
     @ApiModelProperty("部门经理")
-    private Long manager_id;
+    private Long managerId;
 }  

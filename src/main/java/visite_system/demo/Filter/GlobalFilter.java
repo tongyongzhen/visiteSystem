@@ -9,7 +9,8 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import visite_system.demo.Constant.RedisKey;
 import visite_system.demo.Entity.User;
-import visite_system.demo.GlobalUtils.ThreadLocal;
+import visite_system.demo.GlobalUtils.ThreadLocalUtil;
+
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -44,10 +45,10 @@ public class GlobalFilter implements Filter {
         }
         //存入threadLocal
         User user = JSONUtil.toBean(userDetail, User.class);
-        ThreadLocal.set(user);
+        ThreadLocalUtil.set(user);
         //放行
         filterChain.doFilter(servletRequest,servletResponse);
         //移除
-        ThreadLocal.remove();
+        ThreadLocalUtil.remove();
     }
 }

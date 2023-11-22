@@ -22,17 +22,17 @@ import java.util.Date;
 public class CommonAppointment {
     @TableId(type = IdType.AUTO)
     @ApiModelProperty("id")
-    private int id;
+    private Long id;
     @ApiModelProperty("用户id")
-    private Integer user_id;
+    private Long userId;
     @ApiModelProperty("访问部门id")
-    private Integer visite_dept_id;
+    private Long visiteDeptId;
     @ApiModelProperty("被访问人id")
-    private Integer visite_employee_id;
+    private Long visiteEmployeeId;
     @ApiModelProperty("访问开始时间")
-    private Date visite_start_time;
+    private Date visiteStartTime;
     @ApiModelProperty("访问结束时间")
-    private Date visite_end_time;
+    private Date visiteEndTime;
     @ApiModelProperty("审核是否同意")
     private Integer isagree;
     @ApiModelProperty("是否拜访")

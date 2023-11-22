@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class CarLongAppointment {
     @TableId
     @ApiModelProperty("id")
-    private Integer id;
+    private Long id;
     @ApiModelProperty("用户id")
     private Long userId;
     @ApiModelProperty("二维码")

@@ -1,16 +1,19 @@
 package visite_system.demo.GlobalUtils;
 
 import org.springframework.stereotype.Component;
+import visite_system.demo.Entity.User;
+
 
 @Component
-public class ThreadLocal {
-    private static final ThreadLocal threadLocal=new ThreadLocal();
+public class ThreadLocalUtil {
+    private static final ThreadLocal<User> threadLocal=new ThreadLocal();
 
-    public static void set(Object o){
+
+    public static void set(User o){
         threadLocal.set(o);
     }
 
-    public static Object get(){
+    public static User get(){
         return threadLocal.get();
     }
 
