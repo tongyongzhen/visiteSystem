@@ -5,14 +5,15 @@ CREATE TABLE `build_appointment`  (
   `isagree` int NULL DEFAULT -1 COMMENT '是否同意\r\n0-同意\r\n1-不同意\r\n-1 -未确认',
   `isvisite` int NULL DEFAULT -1 COMMENT '是否到访 0-到访 1-未到访',
   `isgo` int NULL COMMENT '是否离开 0-离开 1-未离开',
-  `code` varchar(255) NULL COMMENT '二维码',
+  `code` text NULL COMMENT '二维码',
+  `examiner_id` bigint NULL COMMENT '审核人员id',
   PRIMARY KEY (`id`)
 ) COMMENT = '施工人员预约表';
 
 CREATE TABLE `car_long_appointment`  (
   `id` int NOT NULL COMMENT 'id',
   `user_id` bigint NULL COMMENT '用户id',
-  `code` varchar(255) NULL COMMENT '二维码',
+  `code` text NULL COMMENT '二维码',
   PRIMARY KEY (`id`)
 ) COMMENT = '长期物流司机登记';
 
@@ -33,7 +34,7 @@ CREATE TABLE `car_short_appointment`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
   `user_id` bigint NULL COMMENT '用户id',
   `go_out_count` int NULL COMMENT '当天计划进出次数',
-  `code` varchar(255) NULL COMMENT '二维码',
+  `code` text NULL COMMENT '二维码',
   PRIMARY KEY (`id`)
 ) COMMENT = '临时物流人员预约表';
 
@@ -47,7 +48,7 @@ CREATE TABLE `common_appointment`  (
   `isagree` int NULL DEFAULT -1 COMMENT '是否同意\r\n0-同意\r\n1-不同意\r\n-1 -未确认',
   `isvisite` int NULL DEFAULT -1 COMMENT '是否到访 0-到访 1-未到访',
   `isgo` int NULL COMMENT '是否结束 0-离开 1-未离开',
-  `code` varchar(255) NULL COMMENT '二维码',
+  `code` text NULL COMMENT '二维码',
   PRIMARY KEY (`id`)
 ) COMMENT = '普通访客预约表';
 
@@ -101,7 +102,7 @@ CREATE TABLE `vip_examine`  (
   `manage_id` bigint NULL COMMENT '总经理id',
   `renshi_id` bigint NULL COMMENT '人事id',
   `visite_dept_id` bigint NULL COMMENT '申请部门id',
-  `code` varchar(255) NULL COMMENT '二维码',
+  `code` text NULL COMMENT '二维码',
   `isgo` int NULL COMMENT '是否离开 0-离开 1-未离开',
   PRIMARY KEY (`id`)
 ) COMMENT = 'vip审批';

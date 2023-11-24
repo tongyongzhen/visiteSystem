@@ -36,7 +36,7 @@ public class CommonAppointment {
     private Date visiteStartTime;
     @ApiModelProperty("访问结束时间")
     private Date visiteEndTime;
-    @ApiModelProperty("审核是否同意")
+    @ApiModelProperty("审核是否同意，0-同意，1-不同意")
     private Integer isagree;
     @ApiModelProperty("是否拜访")
     private Integer isvisite;

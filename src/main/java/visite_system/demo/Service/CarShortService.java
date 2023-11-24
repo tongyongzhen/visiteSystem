@@ -6,4 +6,5 @@ import visite_system.demo.Pojo.Result;
 
 public interface CarShortService{
     Result carShortAppoint(CarShortAppointment carShortAppointment);
+
 }

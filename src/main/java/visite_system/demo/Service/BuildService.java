@@ -5,4 +5,6 @@ import visite_system.demo.Pojo.Result;
 
 public interface BuildService {
     Result buildAppoint(BuildAppointment buildAppointment);
+
+    Result buildExamine(BuildAppointment buildAppointment) throws Exception;
 }

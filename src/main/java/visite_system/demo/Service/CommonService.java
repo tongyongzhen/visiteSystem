@@ -9,5 +9,5 @@ public interface CommonService{
     Result commonAppoint(CommonAppointment commonAppointment);
 
 
-    Result commonExamine(CommonAppointment commonAppointment);
+    Result commonExamine(CommonAppointment commonAppointment) throws Exception;
 }

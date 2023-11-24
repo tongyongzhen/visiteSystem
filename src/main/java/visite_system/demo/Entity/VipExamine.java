@@ -17,10 +17,11 @@ import javax.validation.constraints.NotNull;
 @ApiModel(value = "Vip审批实体类")
 public class VipExamine {
     @TableId
-    @ApiModelProperty("id  ")
-    private Integer id; // id
-    @ApiModelProperty("预约id ")
-    private Integer appointmentId; // 预约id
+    @ApiModelProperty("id")
+    private Long id; // id
+    @ApiModelProperty("预约id")
+    @NotNull
+    private Long appointmentId; // 预约id
     @ApiModelProperty("申请部门意见 0-同意 1-不同意 ")
     private Integer visiteDeptOpinion; // 申请部门意见 0-同意 1-不同意
     @ApiModelProperty("人事部门意见 0-同意 1-不同意")
@@ -31,7 +32,7 @@ public class VipExamine {
     private Long manageId; // 总经理id
     @ApiModelProperty("人事id")
     private Long renshiId; // 人事id
-    @ApiModelProperty("申请部门id ")
+    @ApiModelProperty("申请部门审批者id ")
     private Long visiteDeptId; // 申请部门id
     @ApiModelProperty("二维码")
     private String code; // 二维码

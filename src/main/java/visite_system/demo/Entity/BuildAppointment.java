@@ -25,11 +25,13 @@ public class BuildAppointment {
     @NotBlank
     private Long visiteDeptId;
     @ApiModelProperty("审核是否同意")
-    private Integer isAgree;
+    private Integer isagree;
+    @ApiModelProperty("审核人员id")
+    private Long examinerId;
     @ApiModelProperty("是否拜访")
-    private Integer isVisit;
+    private Integer isvisit;
     @ApiModelProperty("是否离开")
-    private Integer isGo;
+    private Integer isgo;
     @ApiModelProperty("二维码")
     private String code;
 }
