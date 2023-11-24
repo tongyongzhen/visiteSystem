@@ -37,7 +37,8 @@ public class GlobalFilter implements Filter {
             return;
         }
         //获取请求头
-        String token = (String)servletRequest.getAttribute("token");
+        String token =request.getHeader("token");
+        System.out.println("token:"+token);
         //查询redis
         String userDetail = stringRedisTemplate.opsForValue().get(RedisKey.LOGIN_KEY + token);
         if(!StringUtils.hasText(userDetail)){

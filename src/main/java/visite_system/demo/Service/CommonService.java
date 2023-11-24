@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import visite_system.demo.Entity.CommonAppointment;
 import visite_system.demo.Pojo.Result;
 
-public interface Common_AppointmentService extends IService<CommonAppointment> {
+public interface CommonService{
 
     Result commonAppoint(CommonAppointment commonAppointment);
+
+
+    Result commonExamine(CommonAppointment commonAppointment);
 }

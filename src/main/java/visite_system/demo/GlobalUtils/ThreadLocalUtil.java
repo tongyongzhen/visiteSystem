@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 import visite_system.demo.Entity.User;
 
 
-@Component
 public class ThreadLocalUtil {
     private static final ThreadLocal<User> threadLocal=new ThreadLocal();
 

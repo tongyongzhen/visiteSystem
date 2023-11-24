@@ -10,6 +10,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 // common_appointment实体类
@@ -26,8 +27,10 @@ public class CommonAppointment {
     @ApiModelProperty("用户id")
     private Long userId;
     @ApiModelProperty("访问部门id")
+    @NotNull
     private Long visiteDeptId;
     @ApiModelProperty("被访问人id")
+    @NotNull
     private Long visiteEmployeeId;
     @ApiModelProperty("访问开始时间")
     private Date visiteStartTime;

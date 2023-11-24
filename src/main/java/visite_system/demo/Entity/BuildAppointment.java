@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 @Builder
 @Data
 @AllArgsConstructor
@@ -20,6 +22,7 @@ public class BuildAppointment {
     @ApiModelProperty("用户id")
     private Long userId;
     @ApiModelProperty("访问部门id")
+    @NotBlank
     private Long visiteDeptId;
     @ApiModelProperty("审核是否同意")
     private Integer isAgree;

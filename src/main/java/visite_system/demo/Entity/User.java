@@ -28,10 +28,12 @@ public class User {
     @ApiModelProperty("手机号")
     private String phone;
     @ApiModelProperty("车牌号")
+    @NotBlank
     private String carnum;
     @ApiModelProperty("0-普通访客，1-VIP，行政访客，2-物流司机，长期，3-物流司机，临时，4-施工人员")
     private Integer type;
     @ApiModelProperty("所属公司")
+    @NotBlank
     private String company;
     @ApiModelProperty("密码")
     @NotBlank

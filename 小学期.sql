@@ -88,6 +88,7 @@ CREATE TABLE `vip_appointment`  (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT '预约id',
   `carnum` varchar(255) NULL COMMENT '车牌号',
   `visite_employee_id` bigint NOT NULL COMMENT '被访问人id',
+  `company` varchar(255) NULL COMMENT '来访单位',
   PRIMARY KEY (`id`)
 ) COMMENT = 'VIP访客预约表';
 

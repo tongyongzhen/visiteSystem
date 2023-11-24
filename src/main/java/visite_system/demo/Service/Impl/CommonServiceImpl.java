@@ -8,11 +8,10 @@ import visite_system.demo.Entity.User;
 import visite_system.demo.GlobalUtils.ThreadLocalUtil;
 import visite_system.demo.Mapper.Common_AppointmentMapper;
 import visite_system.demo.Pojo.Result;
-import visite_system.demo.Service.Common_AppointmentService;
+import visite_system.demo.Service.CommonService;
 
 @Service
-public class Common_AppointmentServiceImpl extends ServiceImpl<Common_AppointmentMapper, CommonAppointment>
-        implements Common_AppointmentService {
+public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private Common_AppointmentMapper commonAppointmentMapper;
@@ -24,7 +23,13 @@ public class Common_AppointmentServiceImpl extends ServiceImpl<Common_Appointmen
         Long userId = user.getId();
         commonAppointment.setUserId(userId);
         //存入数据库
+        int insert = commonAppointmentMapper.insert(commonAppointment);
+        return Result.ok();
+    }
 
-        return null;
+    @Override
+    public Result commonExamine(CommonAppointment commonAppointment) {
+        System.out.println(commonAppointment);
+        return Result.ok();
     }
 }

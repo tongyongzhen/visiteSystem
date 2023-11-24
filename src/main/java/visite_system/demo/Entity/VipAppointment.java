@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 @Builder
 @Data
 @AllArgsConstructor
@@ -20,7 +22,11 @@ public class VipAppointment {
     @ApiModelProperty("预约id  ")
     private Long id; // 预约id
     @ApiModelProperty("车牌号 ")
+    @NotBlank
     private String carnum; // 车牌号
     @ApiModelProperty("被访问人id ")
-    private Long visiteEmployeeId; // 被访问人id  
+    private Long visiteEmployeeId; // 被访问人id
+     @ApiModelProperty("来访单位 ")
+     @NotBlank
+    private String company;
 }
