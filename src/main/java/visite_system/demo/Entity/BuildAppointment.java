@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Builder
 @Data
@@ -22,7 +23,7 @@ public class BuildAppointment {
     @ApiModelProperty("用户id")
     private Long userId;
     @ApiModelProperty("访问部门id")
-    @NotBlank
+    @NotNull
     private Long visiteDeptId;
     @ApiModelProperty("被访问人id")
     private Long visiteEmployeeId;

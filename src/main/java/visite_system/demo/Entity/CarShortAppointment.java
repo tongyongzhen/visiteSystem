@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Builder
 @Data
@@ -24,7 +25,7 @@ public class CarShortAppointment {
     @ApiModelProperty("用户id")
     private Long userId;
     @ApiModelProperty("计划进出次数")
-    @NotBlank
+    @NotNull
     private Integer goOutCount;
     @ApiModelProperty("二维码")
     private String code;
