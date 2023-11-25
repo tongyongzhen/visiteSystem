@@ -24,6 +24,8 @@ public class BuildAppointment {
     @ApiModelProperty("访问部门id")
     @NotBlank
     private Long visiteDeptId;
+    @ApiModelProperty("被访问人id")
+    private Long visiteEmployeeId;
     @ApiModelProperty("审核是否同意")
     private Integer isagree;
     @ApiModelProperty("审核人员id")

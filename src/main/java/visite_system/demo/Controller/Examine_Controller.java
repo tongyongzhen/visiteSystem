@@ -63,7 +63,46 @@ public class Examine_Controller {
                                        @NotNull(message = "id不能为空")
                                                Long id, MultipartFile multipartFile)throws Exception {
         return carLongService.carLongPictureUp(id,multipartFile);
+    }
 
+    @GetMapping("/carShortPictureUp")
+    @ApiOperation("短期物流司机货物照片上传")
+    public Result carShortPictureUp(@ApiParam(value = "传的是审批id不是登记id",required = true)
+                                   @NotNull(message = "id不能为空")
+                                           Long id, MultipartFile multipartFile)throws Exception {
+        return carShortService.carShortPictureUp(id,multipartFile);
+    }
+
+    @GetMapping("/carShortPictureExamine")
+    @ApiOperation("短期物流司机货物审批")
+    public Result carShortPictureExamine(
+            @ApiParam("所有字段都要传")
+            @RequestBody CarShortRecord carShortRecord)throws Exception {
+        return carShortService.carShortPictureExamine(carShortRecord);
+    }
+
+    @GetMapping("/carLongPictureExamine")
+    @ApiOperation("长期物流司机货物审批")
+    public Result carLongPictureExamine(
+            @ApiParam("所有字段都要传")
+            @RequestBody CarLongRecord carLongRecord)throws Exception {
+        return carLongService.carLongPictureExamine(carLongRecord);
+    }
+
+    @GetMapping("/carShortBaoAnExamine")
+    @ApiOperation("短期物流司机保安审批")
+    public Result carShortBaoAnExamine(
+            @ApiParam("所有字段都要传")
+            @RequestBody CarShortRecord carShortRecord)throws Exception {
+        return carShortService.carShortBaoAnExamine(carShortRecord);
+    }
+
+    @GetMapping("/carLongBaoAnExamine")
+    @ApiOperation("长期物流司机保安审批")
+    public Result carLongBaoAnExamine(
+            @ApiParam("所有字段都要传")
+            @RequestBody CarLongRecord carLongRecord)throws Exception {
+        return carLongService.carLongBaoAnExamine(carLongRecord);
     }
 
 

@@ -23,6 +23,6 @@ public class Dept {
     private Long deptId;
     @ApiModelProperty("部门名称")
     private String deptName;
-    @ApiModelProperty("部门经理")
+    @ApiModelProperty("部门经理id")
     private Long managerId;
 }  

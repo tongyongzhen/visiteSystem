@@ -7,6 +7,7 @@ CREATE TABLE `build_appointment`  (
   `isgo` int NULL COMMENT '是否离开 0-离开 1-未离开',
   `code` text NULL COMMENT '二维码',
   `examiner_id` bigint NULL COMMENT '审核人员id',
+  `visite_employee_id` bigint NOT NULL COMMENT '被访问人id',
   PRIMARY KEY (`id`)
 ) COMMENT = '施工人员预约表';
 
@@ -27,6 +28,7 @@ CREATE TABLE `car_long_record`  (
   `baoan_id` bigint NULL COMMENT '保安id',
   `baoan_result` int NULL COMMENT '保安审核结果',
   `picture` text NULL COMMENT '货物照片',
+  `cameraman_id` bigint NULL COMMENT '拍摄人员id',
   PRIMARY KEY (`id`)
 ) COMMENT = '长期物流司机进出记录';
 
@@ -48,6 +50,7 @@ CREATE TABLE `car_short_record`  (
   `baoan_id` bigint NULL COMMENT '保安id',
   `baoan_result` int NULL COMMENT '保安审核结果',
   `picture` text NULL COMMENT '货物照片',
+  `cameraman_id` bigint NULL COMMENT '拍摄人员id',
   PRIMARY KEY (`id`)
 ) COMMENT = '长期物流司机进出记录';
 

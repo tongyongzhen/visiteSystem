@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@TableName("car_long_record")
+@TableName("car_short_record")
 @ApiModel("长期物流司机进出记录")
-public class CarLongRecord {
+public class CarShortRecord {
     @TableId
     @ApiModelProperty("id")
     private Long id;

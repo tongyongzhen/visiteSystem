@@ -52,8 +52,8 @@ public class Appointment_Controller {
 
     @PostMapping("/CarLongAppoint")
     @ApiOperation("长期物流司机预约")
-    public Result carLongAppoint(@RequestBody @Valid CarLongAppointment carLongAppointment){
-        return carLongAppointmentService.carLongAppoint(carLongAppointment);
+    public Result carLongAppoint(){
+        return carLongAppointmentService.carLongAppoint();
 
     }
 

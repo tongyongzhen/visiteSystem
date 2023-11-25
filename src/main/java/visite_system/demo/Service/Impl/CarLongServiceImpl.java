@@ -1,8 +1,5 @@
 package visite_system.demo.Service.Impl;
-
-import cn.hutool.extra.qrcode.QrCodeUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,8 +29,9 @@ public class CarLongServiceImpl implements CarLongService {
     private CarLong_RecordMapper carLongRecordMapper;
 
     @Override
-    public Result carLongAppoint(CarLongAppointment carLongAppointment) {
+    public Result carLongAppoint() {
         User user = ThreadLocalUtil.get();
+        CarLongAppointment carLongAppointment = new CarLongAppointment();
         carLongAppointment.setUserId(user.getId());
         carLongAppointmentMapper.insert(carLongAppointment);
         //获取id
@@ -49,6 +47,7 @@ public class CarLongServiceImpl implements CarLongService {
 
     @Override
     public Result carLongPictureUp(Long id,MultipartFile multipartFile) {
+        User user = ThreadLocalUtil.get();
         //获取文件名
         String fileName = multipartFile.getOriginalFilename();
         //获取文件后缀名
@@ -63,6 +62,7 @@ public class CarLongServiceImpl implements CarLongService {
             multipartFile.transferTo(new File(newFileName));
             CarLongRecord carLongRecord = carLongRecordMapper.selectById(id);
             carLongRecord.setPicture(newFileName);
+            carLongRecord.setCameramanId(user.getId());
             carLongRecordMapper.updateById(carLongRecord);
             //返回提示信息
             return Result.ok();
@@ -71,5 +71,21 @@ public class CarLongServiceImpl implements CarLongService {
             return Result.fail(500,e.getMessage());
         }
 
+    }
+
+    @Override
+    public Result carLongPictureExamine(CarLongRecord carLongRecord) {
+        User user = ThreadLocalUtil.get();
+        carLongRecord.setExamineId(user.getId());
+        carLongRecordMapper.updateById(carLongRecord);
+        return Result.ok();
+    }
+
+    @Override
+    public Result carLongBaoAnExamine(CarLongRecord carLongRecord) {
+        User user = ThreadLocalUtil.get();
+        carLongRecord.setExamineId(user.getId());
+        carLongRecordMapper.updateById(carLongRecord);
+        return Result.ok();
     }
 }
