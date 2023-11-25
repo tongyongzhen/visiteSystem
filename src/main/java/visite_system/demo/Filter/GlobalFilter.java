@@ -31,7 +31,7 @@ public class GlobalFilter implements Filter {
         //获取请求参数
         String requestURI = request.getRequestURI();
         //路径匹配
-        if(requestURI.matches(".*login|register.*")){
+        if(requestURI.matches(".*(login|register).*")){
             //放行
             filterChain.doFilter(servletRequest,servletResponse);
             return;

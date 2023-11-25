@@ -56,5 +56,22 @@
         },
         "usingComponents" : true
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+	
+	"h5": {
+		"devServer" : {
+			"port": 8088,
+			"https" : false,
+			"proxy": {  
+				"/web": {  
+					"target": "http://localhost:90/",
+					"changeOrigin": true,   
+					"secure": false,
+					"pathRewrite": {
+						"^/web": "/"  
+					}  
+				}  
+			}  
+		}
+	}
 }

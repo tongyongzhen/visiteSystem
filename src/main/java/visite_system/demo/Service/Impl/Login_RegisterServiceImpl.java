@@ -44,7 +44,7 @@ public class Login_RegisterServiceImpl extends ServiceImpl<Login_RegisterMapper,
     public Result register(User user) throws Exception {
         String phone=user.getPhone();
         //检验手机号是否正确
-        String regx="/^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\\d{8}$/";
+        String regx="(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\\d{8}";
         if(!phone.matches(regx)){
             throw new Exception("手机号格式不正确");
         }

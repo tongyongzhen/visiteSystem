@@ -32,7 +32,7 @@ public class Login_Register_Controller {
     /**
      * 注册
      */
-    @PostMapping("/reister")
+    @PostMapping("/register")
     @ApiOperation(value = "用户注册")
     public Result register(@RequestBody @Valid User user) throws Exception {
         return loginRegisterService.register(user);

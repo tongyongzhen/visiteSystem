@@ -32,6 +32,12 @@
 				<input type="text" v-model="data.pai" placeholder="请输入车牌号"/>
 			</view>
 		</view>
+		<view class="item">
+			<view class="left">所属公司</view>
+			<view class="right">
+				<input type="text" v-model="data.company" placeholder="请输入所属公司"/>
+			</view>
+		</view>
 		<view class="bottom">
 			<button type="primary" @click="register">注册</button>
 		</view>
@@ -39,7 +45,7 @@
 </template>
 
 <script>
-	// import {register} from "../../api/request.js"
+	import {register} from "../../api/request.js"
 	export default {
 		mounted() {
 		},
@@ -48,11 +54,11 @@
 				isSame:true,
 				passwordRepeat:undefined,
 				data:{
-					username:undefined,
+					name:undefined,
 					password:undefined,
 					phone:undefined,
-					name:undefined,
-					pai:undefined
+					carnum:undefined,
+					company:undefined
 				}
 			}
 		},
@@ -69,12 +75,10 @@
 								url:"/pages/login/login"
 							})
 						},1500)
-					}else{
-						uni.showToast({
-							icon:"error",
-							title:`${resp.data.msg}`
-						})
+						
 					}
+						
+					
 				})
 			},
 			check(){

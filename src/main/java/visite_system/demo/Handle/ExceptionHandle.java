@@ -2,7 +2,6 @@ package visite_system.demo.Handle;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import visite_system.demo.Pojo.Result;
 
@@ -24,6 +23,6 @@ public class ExceptionHandle {
     @ExceptionHandler(value = {ServletException.class})
     public Result servletException(Exception exception){
         System.out.println("进入servletException处理器");
-        return Result.fail(500,exception.getMessage());
+        return Result.fail(401,exception.getMessage());
     }
 }
