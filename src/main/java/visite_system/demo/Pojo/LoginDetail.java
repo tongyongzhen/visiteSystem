@@ -6,8 +6,8 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class LoginDetail {
-    @NotBlank
+    @NotBlank(message = "手机号不能为空",groups = LoginValid.class)
     private String phone;
-    @NotBlank
+    @NotBlank(message = "密码不能为空",groups = LoginValid.class)
     private String password;
 }

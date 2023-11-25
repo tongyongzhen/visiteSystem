@@ -9,4 +9,6 @@ public interface VIPService{
     Result vipAppoint(VipAppointment vipAppointment);
 
     Result vipExamine(VipExamine vipExamine);
+
+    Result vipVisiteEnd(Long id);
 }

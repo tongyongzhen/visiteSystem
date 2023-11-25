@@ -53,4 +53,18 @@ public class CommonServiceImpl implements CommonService {
         commonAppointmentMapper.updateById(commonAppointment1);
         return Result.ok(commonAppointment1);
     }
+
+    @Override
+    public Result commonVisiteEnd(Long id) throws Exception {
+        CommonAppointment commonAppointment = commonAppointmentMapper.selectById(id);
+        if(ObjectUtils.isEmpty(commonAppointment)){
+            throw new Exception("预约id不存在");
+        }
+        if(commonAppointment.getIsagree()!=0){
+            throw new Exception("该预约未同意");
+        }
+        commonAppointment.setIsgo(0);
+        commonAppointmentMapper.updateById(commonAppointment);
+        return Result.ok();
+    }
 }

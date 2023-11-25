@@ -1,6 +1,7 @@
 package visite_system.demo.Service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -55,5 +56,15 @@ public class VIPServiceImpl implements VIPService {
         vipExamineMapper.insert(vipExamine);
         return Result.ok();
 
+    }
+
+    @Override
+    public Result vipVisiteEnd(Long id) {
+        LambdaUpdateWrapper<VipExamine> wrapper = new LambdaUpdateWrapper<>();
+        wrapper.eq(VipExamine::getAppointmentId,id);
+        VipExamine vipExamine = vipExamineMapper.selectOne(wrapper);
+        vipExamine.setIsgo(0);
+        vipExamineMapper.updateById(vipExamine);
+        return Result.ok();
     }
 }

@@ -26,7 +26,7 @@ CREATE TABLE `car_long_record`  (
   `examine_result` int NULL COMMENT '部门班长审核结果',
   `baoan_id` bigint NULL COMMENT '保安id',
   `baoan_result` int NULL COMMENT '保安审核结果',
-  `picture` varchar(255) NULL COMMENT '货物照片',
+  `picture` text NULL COMMENT '货物照片',
   PRIMARY KEY (`id`)
 ) COMMENT = '长期物流司机进出记录';
 
@@ -37,6 +37,19 @@ CREATE TABLE `car_short_appointment`  (
   `code` text NULL COMMENT '二维码',
   PRIMARY KEY (`id`)
 ) COMMENT = '临时物流人员预约表';
+
+CREATE TABLE `car_short_record`  (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `appointment_id` bigint NOT NULL COMMENT '登记id',
+  `enter_time` datetime NULL COMMENT '进入时间',
+  `go_time` datetime NULL COMMENT '离开时间',
+  `examine_id` bigint NULL COMMENT '部门班长id',
+  `examine_result` int NULL COMMENT '部门班长审核结果',
+  `baoan_id` bigint NULL COMMENT '保安id',
+  `baoan_result` int NULL COMMENT '保安审核结果',
+  `picture` text NULL COMMENT '货物照片',
+  PRIMARY KEY (`id`)
+) COMMENT = '长期物流司机进出记录';
 
 CREATE TABLE `common_appointment`  (
   `id` bigint NOT NULL AUTO_INCREMENT COMMENT 'id',

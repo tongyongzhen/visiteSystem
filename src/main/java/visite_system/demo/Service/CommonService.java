@@ -10,4 +10,6 @@ public interface CommonService{
 
 
     Result commonExamine(CommonAppointment commonAppointment) throws Exception;
+
+    Result commonVisiteEnd(Long id) throws Exception;
 }
