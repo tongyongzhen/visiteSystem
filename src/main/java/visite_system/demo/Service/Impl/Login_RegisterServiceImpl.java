@@ -56,6 +56,7 @@ public class Login_RegisterServiceImpl extends ServiceImpl<Login_RegisterMapper,
             throw new Exception("用户已存在");
         }
         //注册
+        user.setType(0);
         loginRegisterMapper.insert(user);
         return Result.ok();
     }
