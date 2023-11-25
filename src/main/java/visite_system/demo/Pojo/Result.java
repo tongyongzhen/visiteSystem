@@ -15,7 +15,7 @@ public class Result {
         return result;
     }
     public static Result ok(Object data){
-        Result result = new Result();
+        Result result = Result.ok();
         result.setData(data);
         return result;
     }
