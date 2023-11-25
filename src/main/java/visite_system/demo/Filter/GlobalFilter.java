@@ -32,7 +32,7 @@ public class GlobalFilter implements Filter {
         String requestURI = request.getRequestURI();
         //路径匹配
         System.out.println("requestURI:"+requestURI);
-        if(requestURI.matches(".*(register|login|swagger|/|api-docs|csrf).*")){
+        if(requestURI.matches(".*(register|login|swagger|api-docs|csrf).*")){
             //放行
             System.out.println("放行");
             filterChain.doFilter(servletRequest,servletResponse);

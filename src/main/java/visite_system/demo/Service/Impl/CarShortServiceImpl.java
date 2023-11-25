@@ -41,7 +41,7 @@ public class CarShortServiceImpl implements CarShortService {
         //生成二维码
         String qrCode = qrCodeUtils.createQrCode(String.valueOf(one.getId()));
         one.setCode(qrCode);
-        carShortAppointmentMapper.insert(one);
+        carShortAppointmentMapper.updateById(one);
         return Result.ok(one);
     }
 
