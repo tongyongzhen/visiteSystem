@@ -40,7 +40,7 @@ public class User {
     @NotBlank(message = "密码不能为空",groups = LoginValid.class)
     private String password;
     @ApiModelProperty(value = "是否是内部人员 0-是，1-不是")
-    private int isEmployee;
+    private Integer isEmployee;
     @ApiModelProperty("内部人员所属部门id")
     private Long deptId;
 }
