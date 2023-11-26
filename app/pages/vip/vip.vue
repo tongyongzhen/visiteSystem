@@ -14,7 +14,7 @@
 				<input type="text" v-model="data.company" placeholder="请输入来访单位"/>
 			</view>
 		</view>
-		<view class="item">
+		<!-- <view class="item">
 			<view class="c">访问部门</view>
 			<view class="d">
 				<uni-data-select
@@ -33,7 +33,7 @@
 			  @change="change"
 			  :clear="false"
 			></uni-data-select>
-		</view>
+		</view> -->
 		<view>
 			<button type="primary" class="button" @click="yuyue">申报</button>
 		</view>

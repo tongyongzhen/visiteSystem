@@ -130,6 +130,24 @@ export function ofMe(){
 	})
 }
 
+//查询我的预约
+export function cxyy(){
+	return axios({
+		url:"/web/Appointment/queryMyAppointment",
+		method:"get"
+		
+	})
+}
+
+//施工人员审批
+export function sgrysp(){
+	return axios({
+		url:"/web/Examine/BuildExamine",
+		method:"get"
+		
+	})
+}
+
 
 
 

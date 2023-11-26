@@ -40,7 +40,7 @@
 		      ></uni-data-select>
 		    </uni-section>
 		  </view> -->
-		  <view class="c">
+		  <view class="c" @click="shenpi">
 			<view>张三</view>
 		  	<view>12345678</view>
 		  	<view>></view>
@@ -97,6 +97,11 @@
       // change(e) {
       //   console.log("e:", e);
       // },
+	  shenpi(){
+		  uni.navigateTo({
+		  	url:"/pages/fshenpi/fshenpi"
+		  })
+	  }
     },
   };
 </script>
