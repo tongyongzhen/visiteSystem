@@ -30,4 +30,10 @@ public class UserServiceImpl implements UserService {
         user.setPassword(null);
         return Result.ok(user);
     }
+
+    @Override
+    public Result queryDeptById(Long id) {
+        User user = userMapper.selectById(id);
+        return Result.ok(user);
+    }
 }

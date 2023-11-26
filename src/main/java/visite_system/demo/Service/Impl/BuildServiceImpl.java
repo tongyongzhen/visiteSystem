@@ -11,6 +11,8 @@ import visite_system.demo.Mapper.Build_AppointmentMapper;
 import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.BuildService;
 
+import java.util.Date;
+
 @Service
 public class BuildServiceImpl implements BuildService {
     @Autowired
@@ -23,6 +25,7 @@ public class BuildServiceImpl implements BuildService {
     public Result buildAppoint(BuildAppointment buildAppointment) {
         User user = ThreadLocalUtil.get();
         buildAppointment.setUserId(user.getId());
+        buildAppointment.setAppointTime(new Date());
         buildAppointmentMapper.insert(buildAppointment);
         return Result.ok();
     }

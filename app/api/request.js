@@ -148,6 +148,32 @@ export function sgrysp(){
 	})
 }
 
+//根据部门id查询部门信息
+export function queryDeptById(id){
+	return axios({
+		url:"/web/user_Dept/queryDeptById/"+id,
+		method:"get"
+		
+	})
+}
+//根据用户id查询用户信息
+export function queryUserById(id){
+	return axios({
+		url:"/web/user_Dept/queryUserById/"+id,
+		method:"get"
+		
+	})
+}
+
+//根据id查询二维码
+export function queryCodeById(id){
+	return axios({
+		url:"/web/Appointment/queryCodeById/"+id,
+		method:"get"
+		
+	})
+}
+
 
 
 

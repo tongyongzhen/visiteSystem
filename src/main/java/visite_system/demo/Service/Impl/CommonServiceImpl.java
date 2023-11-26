@@ -15,6 +15,11 @@ import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.CommonService;
 
 import java.awt.image.BufferedImage;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Service
 public class CommonServiceImpl implements CommonService {
@@ -31,6 +36,7 @@ public class CommonServiceImpl implements CommonService {
         User user = ThreadLocalUtil.get();
         Long userId = user.getId();
         commonAppointment.setUserId(userId);
+        commonAppointment.setAppointTime(new Date());
         //存入数据库
         int insert = commonAppointmentMapper.insert(commonAppointment);
         return Result.ok();

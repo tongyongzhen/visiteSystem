@@ -7,4 +7,5 @@ public interface UserService {
 
     Result ofMe();
 
+    Result queryDeptById(Long id);
 }

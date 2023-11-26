@@ -5,8 +5,8 @@
 <mapper namespace="visite_system.demo.Mapper.VIP_AppointmentMapper">
 
 
-    <select id="queryVipAppointmentByUserId" resultType="visite_system.demo.Entity.VipExamine">
-        SELECT e.* FROM `vip_examine` e
+    <select id="queryVipAppointmentByUserId" resultType="visite_system.demo.Pojo.VipExamineInfo">
+        SELECT e.*,a.carnum,a.company,a.appoint_time FROM `vip_examine` e
         JOIN vip_appointment a
         ON e.appointment_id=a.id
         WHERE a.visite_employee_id=#{id}

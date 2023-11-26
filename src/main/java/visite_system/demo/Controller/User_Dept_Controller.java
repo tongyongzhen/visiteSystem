@@ -42,4 +42,16 @@ public class User_Dept_Controller {
     public Result ofMe(){
         return userService.ofMe();
     }
+
+    @GetMapping("/queryDeptById/{id}")
+    @ApiOperation("根据id查询部门")
+    public Result queryDeptById(@PathVariable("id") Long id){
+        return deptService.queryDeptById(id);
+    }
+
+    @GetMapping("/queryUserById/{id}")
+    @ApiOperation("根据id查询user")
+    public Result queryUserById(@PathVariable("id") Long id){
+        return userService.queryDeptById(id);
+    }
 }

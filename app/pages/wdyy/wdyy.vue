@@ -1,8 +1,13 @@
 <template>
 	<view class="container">
-		<view class="a"><h1>我的预约</h1></view>
+		<view class="title"><h1>我的预约</h1></view>
+		<view class="no" v-if="list.length==0">没有任何预约</view>
 		<view class="c" v-for="(p,index) in list" :key="index">
-			<view @click="yy" class="a">{{"预约"}}{{index+1}}</view>
+			<view @click="yy(p)" class="a">
+				<view>{{"预约"}}{{index+1}}</view>
+				<view>{{p.appointTime}}</view>
+			
+			</view>
 		</view>
 	</view>
 </template>
@@ -17,16 +22,13 @@
 		},
 		data() {
 			return {
-				list:[],
-				data:{
-					
-				}
+				list:[]
 			}
 		},
 		methods: {
-			yy(){
+			yy(details){
 				uni.navigateTo({
-					url:"/pages/fshenpi/fshenpi"
+					url:"/pages/fyyxx/fyyxx?details="+JSON.stringify(details)+"&code="+details.code
 				})
 			}
 		}
@@ -39,7 +41,13 @@
 		font-size: 14px;
 		line-height: 24px;
 	}
+	.title{
+		color: seagreen;
+		text-align: center;
+	}
 	.a{
+		display: flex;
+		justify-content: space-between;
 		color: seagreen;
 		text-align: center;
 		margin-top: 20px;
@@ -48,5 +56,12 @@
 		font-size: 20px;
 		margin-top: 10px;
 		box-shadow:0 0 2rpx #000000;
+	}
+	
+	.no{
+		display: flex;justify-content: center;
+		margin-top: 50px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #c6c6c6;
 	}
 </style>

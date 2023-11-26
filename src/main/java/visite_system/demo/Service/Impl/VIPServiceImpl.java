@@ -15,6 +15,8 @@ import visite_system.demo.Mapper.VIP_ExamineMapper;
 import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.VIPService;
 
+import java.util.Date;
+
 
 @Service
 public class VIPServiceImpl implements VIPService {
@@ -39,6 +41,7 @@ public class VIPServiceImpl implements VIPService {
         //获取登录人员信息
         User user = ThreadLocalUtil.get();
         vipAppointment.setVisiteEmployeeId(user.getId());
+        vipAppointment.setAppointTime(new Date());
         //存入数据库
         vipAppointmentMapper.insert(vipAppointment);
         //获取id

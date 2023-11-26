@@ -9,8 +9,8 @@
 				</view>
 			<view><image class="image2" src="../../static/ewm.png"></image></view>
 		</view>
-		<view class="item">
-			<view @click="yyxx">
+		<view class="item"  @click="yyxx">
+			<view>
 				<image class="image3" src="../../static/xiaoxi.png"></image>预约信息
 			</view>
 			<view>></view>

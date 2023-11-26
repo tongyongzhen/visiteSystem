@@ -20,4 +20,10 @@ public class DeptServiceImpl implements DeptService {
         List<Dept> depts = deptMapper.selectList(null);
         return Result.ok(depts);
     }
+
+    @Override
+    public Result queryDeptById(Long id) {
+        Dept dept = deptMapper.selectById(id);
+        return Result.ok(dept);
+    }
 }

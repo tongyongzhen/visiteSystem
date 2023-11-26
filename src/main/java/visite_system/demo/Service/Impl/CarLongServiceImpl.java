@@ -15,6 +15,7 @@ import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.CarLongService;
 
 import java.io.File;
+import java.util.Date;
 import java.util.UUID;
 
 @Service
@@ -42,6 +43,7 @@ public class CarLongServiceImpl implements CarLongService {
         }
         CarLongAppointment carLongAppointment = new CarLongAppointment();
         carLongAppointment.setUserId(user.getId());
+        carLongAppointment.setAppointTime(new Date());
         carLongAppointmentMapper.insert(carLongAppointment);
         //获取id
         //生成二维码

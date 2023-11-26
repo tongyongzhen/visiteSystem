@@ -75,4 +75,10 @@ public class Appointment_Controller {
     public Result queryMyAppointment(){
         return globalService.queryMyAppointment();
     }
+
+    @GetMapping("/queryCodeById/{id}")
+    @ApiOperation("根据id查询二维码")
+    public Result queryCodeById(@PathVariable("id") Long id){
+        return globalService.queryCodeById(id);
+    }
 }

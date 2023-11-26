@@ -18,6 +18,7 @@ import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.CarShortService;
 
 import java.io.File;
+import java.util.Date;
 import java.util.UUID;
 
 @Service
@@ -41,6 +42,7 @@ public class CarShortServiceImpl implements CarShortService {
             throw new Exception("当前账号已登记");
         }
         carShortAppointment.setUserId(user.getId());
+        carShortAppointment.setAppointTime(new Date());
         carShortAppointmentMapper.insert(carShortAppointment);
         one = carShortAppointmentMapper.selectOne(wrapper);
         //生成二维码
