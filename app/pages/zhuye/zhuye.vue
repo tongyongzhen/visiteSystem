@@ -13,10 +13,17 @@
 </template>
 
 <script>
+	import {ofMe} from "../../api/request.js"
+	
 	export default {
+		onShow() {
+			ofMe().then(resp=>{
+				this.loginUser=resp.data.data
+			})
+		},
 		data() {
 			return {
-				
+				loginUser:undefined	
 			}
 		},
 		methods:{

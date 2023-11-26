@@ -51,7 +51,7 @@
 						})
 						
 						setTimeout(x=>{
-							uni.navigateTo({
+							uni.switchTab({
 								url:"/pages/zhuye/zhuye"
 							})
 						},1500)

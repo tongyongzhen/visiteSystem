@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import visite_system.demo.Entity.User;
+import visite_system.demo.GlobalUtils.ThreadLocalUtil;
 import visite_system.demo.Mapper.UserMapper;
 import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.UserService;
@@ -21,5 +22,12 @@ public class UserServiceImpl implements UserService {
         wrapper.eq(User::getDeptId,id);
         List<User> users = userMapper.selectList(wrapper);
         return Result.ok(users);
+    }
+
+    @Override
+    public Result ofMe() {
+        User user = ThreadLocalUtil.get();
+        user.setPassword(null);
+        return Result.ok(user);
     }
 }
