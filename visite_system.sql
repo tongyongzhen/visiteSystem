@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 26/11/2023 09:53:50
+ Date: 26/11/2023 10:56:21
 */
 
 SET NAMES utf8mb4;
@@ -200,6 +200,7 @@ INSERT INTO `user` VALUES (3, '小李', '13914782259', NULL, NULL, NULL, '123456
 INSERT INTO `user` VALUES (4, '小罗', '13814015365', NULL, NULL, NULL, '123456', 0, 3);
 INSERT INTO `user` VALUES (5, '小邹', '15295707698', NULL, NULL, NULL, '123456', 0, 5);
 INSERT INTO `user` VALUES (6, '小朱', '15295707694', NULL, NULL, NULL, '123456', 0, 6);
+INSERT INTO `user` VALUES (7, '小熊', '13205159515', NULL, 0, NULL, '123456', 1, NULL);
 
 -- ----------------------------
 -- Table structure for vip_appointment
@@ -210,6 +211,7 @@ CREATE TABLE `vip_appointment`  (
   `carnum` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '车牌号',
   `visite_employee_id` bigint NOT NULL COMMENT '被访问人id',
   `company` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '来访单位',
+  `visite_dept_id` bigint NULL DEFAULT NULL COMMENT '访问部门id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'VIP访客预约表' ROW_FORMAT = Dynamic;
 
