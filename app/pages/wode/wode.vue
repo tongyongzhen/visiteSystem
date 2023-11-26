@@ -10,8 +10,8 @@
 			<view><image class="image2" src="../../static/ewm.png"></image></view>
 		</view>
 		<view class="item">
-			<view>
-				<image class="image3" src="../../static/xiaoxi.png"></image>消息通知
+			<view @click="yyxx">
+				<image class="image3" src="../../static/xiaoxi.png"></image>预约信息
 			</view>
 			<view>></view>
 		</view>
@@ -69,6 +69,13 @@
 			return {
 				loginUser:{}
 			};
+		},
+		methods:{
+			yyxx(){
+				uni.navigateTo({
+					url:"/pages/wdyy/wdyy"
+				})
+			}
 		}
 		
 	}

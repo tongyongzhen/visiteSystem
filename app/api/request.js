@@ -130,6 +130,15 @@ export function ofMe(){
 	})
 }
 
+//施工人员审批
+export function sgrysp(){
+	return axios({
+		url:"/web/Examine/BuildExamine",
+		method:"get"
+		
+	})
+}
+
 
 
 
