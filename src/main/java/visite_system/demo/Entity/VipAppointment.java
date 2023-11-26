@@ -26,8 +26,6 @@ public class VipAppointment {
     private String carnum; // 车牌号
     @ApiModelProperty("被访问人id ")
     private Long visiteEmployeeId; // 被访问人id
-    @ApiModelProperty("访问部门id ")
-    private Long visiteDeptId; // 
      @ApiModelProperty("来访单位 ")
      @NotBlank
     private String company;

@@ -4,10 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import visite_system.demo.Entity.*;
 import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.*;
@@ -73,7 +70,7 @@ public class Appointment_Controller {
         return buildService.buildAppoint(buildAppointment);
     }
 
-    @PostMapping("/queryMyAppointment")
+    @GetMapping("/queryMyAppointment")
     @ApiOperation("查询我的预约")
     public Result queryMyAppointment(){
         return globalService.queryMyAppointment();
