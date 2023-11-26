@@ -29,6 +29,12 @@ axios.interceptors.response.use(resp=>{
 	}
 	
 	return resp
+},error=>{
+	setTimeout(x=>{
+		uni.navigateTo({
+			url:"/pages/login/login"
+		})
+	},1500)
 })
 
 

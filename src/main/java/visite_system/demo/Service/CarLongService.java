@@ -6,7 +6,7 @@ import visite_system.demo.Entity.CarLongRecord;
 import visite_system.demo.Pojo.Result;
 
 public interface CarLongService {
-    Result carLongAppoint();
+    Result carLongAppoint() throws Exception;
 
     Result carLongPictureUp(Long id,MultipartFile multipartFile);
 

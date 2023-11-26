@@ -7,7 +7,7 @@ import visite_system.demo.Entity.CarShortRecord;
 import visite_system.demo.Pojo.Result;
 
 public interface CarShortService{
-    Result carShortAppoint(CarShortAppointment carShortAppointment);
+    Result carShortAppoint(CarShortAppointment carShortAppointment) throws Exception;
 
     Result carShortPictureUp(Long id, MultipartFile multipartFile);
 

@@ -6,7 +6,7 @@ import visite_system.demo.Entity.VipExamine;
 import visite_system.demo.Pojo.Result;
 
 public interface VIPService{
-    Result vipAppoint(VipAppointment vipAppointment);
+    Result vipAppoint(VipAppointment vipAppointment) throws Exception;
 
     Result vipExamine(VipExamine vipExamine);
 

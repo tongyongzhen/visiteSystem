@@ -29,18 +29,23 @@ public class VIPServiceImpl implements VIPService {
     private QrCodeUtils qrCodeUtils;
 
     @Override
-    public Result vipAppoint(VipAppointment vipAppointment) {
+    public Result vipAppoint(VipAppointment vipAppointment) throws Exception {
+        LambdaQueryWrapper<VipAppointment> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(VipAppointment::getCarnum,vipAppointment.getCarnum());
+        VipAppointment one = vipAppointmentMapper.selectOne(wrapper);
+        if(!ObjectUtils.isEmpty(one)){
+            throw new Exception("当前车牌已经预约过");
+        }
         //获取登录人员信息
         User user = ThreadLocalUtil.get();
         vipAppointment.setVisiteEmployeeId(user.getId());
         //存入数据库
         vipAppointmentMapper.insert(vipAppointment);
         //获取id
-        LambdaQueryWrapper<VipAppointment> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(VipAppointment::getCarnum,vipAppointment.getCarnum());
-        VipAppointment one = vipAppointmentMapper.selectOne(wrapper);
+        one = vipAppointmentMapper.selectOne(wrapper);
         Long appointmentId = one.getId();
         VipExamine vipExamine = VipExamine.builder().appointmentId(appointmentId).build();
+        System.out.println("vipExamine"+vipExamine);
         vipExamineMapper.insert(vipExamine);
         return Result.ok();
     }
