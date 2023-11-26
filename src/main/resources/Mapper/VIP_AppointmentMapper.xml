@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="visite_system.demo.Mapper.VIP_AppointmentMapper">
+
+
+    <select id="queryVipAppointmentByUserId" resultType="visite_system.demo.Entity.VipExamine">
+        SELECT e.* FROM `vip_examine` e
+        JOIN vip_appointment a
+        ON e.appointment_id=a.id
+        WHERE a.visite_employee_id=#{id}
+    </select>
+</mapper>

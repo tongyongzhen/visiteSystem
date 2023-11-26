@@ -35,6 +35,9 @@ public class Appointment_Controller {
     @Autowired
     private BuildService buildService;
 
+    @Autowired
+    private GlobalService globalService;
+
 
     @PostMapping("/CommonAppoint")
     @ApiOperation("普通访客预约")
@@ -68,6 +71,11 @@ public class Appointment_Controller {
     @ApiOperation("施工人员预约")
     public Result buildAppoint(@RequestBody @Valid BuildAppointment buildAppointment){
         return buildService.buildAppoint(buildAppointment);
+    }
 
+    @PostMapping("/queryMyAppointment")
+    @ApiOperation("查询我的预约")
+    public Result queryMyAppointment(){
+        return globalService.queryMyAppointment();
     }
 }

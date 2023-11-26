@@ -6,4 +6,5 @@ public interface UserService {
     Result queryAllDept(Long id);
 
     Result ofMe();
+
 }
