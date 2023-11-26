@@ -3,7 +3,7 @@
 		<view class="container">
 			<button type="primary" class="button1" @click="yuyue">预约</button>
 		</view>
-		<view class="container">
+		<view class="container" v-if="loginUser.isEmployee==0">
 			<button type="primary"  class="button2" @click="shenpi">审批</button>
 		</view>
 		<view class="container">
@@ -23,14 +23,40 @@
 		},
 		data() {
 			return {
-				loginUser:undefined	
+				loginUser:{}	
 			}
 		},
 		methods:{
 			yuyue(){
-				uni.navigateTo({
-					url:"/pages/ptfk/ptfk"
-				})		
+				if(this.loginUser.isEmployee==0){
+						uni.navigateTo({
+						url:"/pages/vip/vip",
+					})		
+				}
+				let type=this.loginUser.type
+				switch(type){
+					case 0:
+					uni.navigateTo({
+					url:"/pages/ptfk/ptfk",
+				})
+					break;
+					case 2:
+						uni.navigateTo({
+						url:"/pages/cqwl/cqwl",
+					})
+						break;	
+					case 3:
+						uni.navigateTo({
+						url:"/pages/dqwl/dqwl",
+					})
+						break;
+					case 4:
+						uni.navigateTo({
+						url:"/pages/sgry/sgry",
+					})
+						break;
+				}
+					
 			},
 			shenpi(){
 				uni.navigateTo({
