@@ -21,17 +21,17 @@
 		},
 		methods:{
 			yuyue(){
-				uni.switchTab({
+				uni.navigateTo({
 					url:"/pages/ptfk/ptfk"
 				})		
 			},
 			shenpi(){
-				uni.switchTab({
+				uni.navigateTo({
 					url:"/pages/shenpi/shenpi"
 				})
 			},
 			lichang(){
-				uni.switchTab({
+				uni.navigateTo({
 					url:"/pages/lichang/lichang"
 				})
 			}

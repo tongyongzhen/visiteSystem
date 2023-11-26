@@ -121,6 +121,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/fshenpi/fshenpi",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -156,6 +165,12 @@
 			},
 			{
 				"pagePath": "pages/wode/wode",
+				"iconPath": "static/wd.png",
+				"selectedIconPath": "static/wd.png",
+				"text": "我的"
+			},
+			{
+				"pagePath": "pages/fshenpi/fshenpi",
 				"iconPath": "static/wd.png",
 				"selectedIconPath": "static/wd.png",
 				"text": "我的"

@@ -1,7 +1,7 @@
 <template>
-	<view>
+	<view class="container">
 		<view class="a"><h1>审批</h1></view>
-		<view class="b">
+		<!-- <view class="b">
 		    <uni-section title="用户" type="line">
 		      <uni-data-select
 		        v-model="value"
@@ -39,6 +39,31 @@
 		        label="应用选择"
 		      ></uni-data-select>
 		    </uni-section>
+		  </view> -->
+		  <view class="c">
+			<view>张三</view>
+		  	<view>12345678</view>
+		  	<view>></view>
+		  </view>
+		  <view class="c">
+		  			<view>张三</view>
+		  	<view>12345678</view>
+		  	<view>></view>
+		  </view>
+		  <view class="c">
+		  			<view>张三</view>
+		  	<view>12345678</view>
+		  	<view>></view>
+		  </view>
+		  <view class="c">
+		  			<view>张三</view>
+		  	<view>12345678</view>
+		  	<view>></view>
+		  </view>
+		  <view class="c">
+		  			<view>张三</view>
+		  	<view>12345678</view>
+		  	<view>></view>
 		  </view>
 	</view>
 </template>
@@ -47,51 +72,59 @@
 	export default {
     data() {
       return {
-        value: 0,
-        range1: [
-		  { value: 0, text: "请选择"},
-          { value: 1, text: "篮球" },
-          { value: 2, text: "足球" },
-          { value: 3, text: "游泳" },
-        ],
-		range2: [
-		  { value: 0, text: "请选择"},
-		  { value: 1, text: "篮球" },
-		  { value: 2, text: "足球" },
-		  { value: 3, text: "游泳" },
-		],
-		range3: [
-		  { value: 0, text: "请选择"},
-		  { value: 1, text: "篮球" },
-		  { value: 2, text: "足球" },
-		  { value: 3, text: "游泳" },
-		],
+  //       value: 0,
+  //       range1: [
+		//   { value: 0, text: "请选择"},
+  //         { value: 1, text: "篮球" },
+  //         { value: 2, text: "足球" },
+  //         { value: 3, text: "游泳" },
+  //       ],
+		// range2: [
+		//   { value: 0, text: "请选择"},
+		//   { value: 1, text: "篮球" },
+		//   { value: 2, text: "足球" },
+		//   { value: 3, text: "游泳" },
+		// ],
+		// range3: [
+		//   { value: 0, text: "请选择"},
+		//   { value: 1, text: "篮球" },
+		//   { value: 2, text: "足球" },
+		//   { value: 3, text: "游泳" },
+		// ],
       };
     },
     methods: {
-      change(e) {
-        console.log("e:", e);
-      },
+      // change(e) {
+      //   console.log("e:", e);
+      // },
     },
   };
 </script>
 
 <style>
+	.container {
+		padding: 20px;
+		font-size: 14px;
+		line-height: 24px;
+	}
 	.a{
 		color: seagreen;
 		text-align: center;
 		margin-top: 20px;
 	}
-	.b{
+	/* .b{
 		margin-top: 20px;
-	}
+	} */
 	.c{
 		display: flex;
 		justify-content: space-between;
+		font-size: 20px;
+		margin-top: 10px;
+		box-shadow:0 0 2rpx #000000;
 	}
-	.button{
+	/* .button{
 		margin-top: 20px;
 		background-color: white;
 		color: black;
-	}
+	} */
 </style>
