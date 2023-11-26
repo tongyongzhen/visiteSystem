@@ -88,6 +88,15 @@ export function ptfkyy(data){
 	})
 }
 
+//VIP访客预约
+export function vipyy(data){
+	return axios({
+		url:"/web/Appointment/VIPAppoint",
+		method:"post",
+		data:data
+	})
+}
+
 //查询所有部门
 export function cxbm(){
 	return axios({

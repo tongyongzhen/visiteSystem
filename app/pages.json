@@ -171,7 +171,7 @@
 				"text": "我的"
 			},
 			{
-				"pagePath": "pages/fshenpi/fshenpi",
+				"pagePath": "pages/vip/vip",
 				"iconPath": "static/wd.png",
 				"selectedIconPath": "static/wd.png",
 				"text": "我的"

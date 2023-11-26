@@ -22,10 +22,10 @@
 		</view>
 		<view class="b">
 			<view>
-				<button type="primary" class="button" @click="yuyue">同意</button>
+				<button type="primary" class="button" @click="ty">同意</button>
 			</view>
 			<view>
-				<button type="primary" class="button" @click="yuyue">拒绝</button>
+				<button type="primary" class="button" @click="jj">拒绝</button>
 			</view>
 		</view>
 		
@@ -43,7 +43,16 @@
 			}
 		},
 		methods: {
-			
+			ty(){
+				uni.navigateTo({
+					url:"/pages/yycg/yycg"
+				})
+			},
+			jj(){
+				uni.navigateTo({
+					url:"/pages/yysb/yysb"
+				})
+			}
 		}
 	}
 </script>

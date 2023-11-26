@@ -4,14 +4,21 @@
 		<view class="item">
 			<view class="c">车牌号</view>
 			<view class="d">
-				<input type="text" v-model="data.name" placeholder="请输入车牌号"/>
+				<input type="text" v-model="data.carnum" placeholder="请输入车牌号"/>
 			</view>
 		</view>
+		
 		<view class="item">
 			<view class="c">来访单位</view>
 			<view class="d">
+				<input type="text" v-model="data.company" placeholder="请输入来访单位"/>
+			</view>
+		</view>
+		<view class="item">
+			<view class="c">访问部门</view>
+			<view class="d">
 				<uni-data-select
-				  v-model="data.visiteDeptId"
+				  v-model="data.visiteDepId"
 				  :localdata="range1"
 				  @change="change"
 				  :clear="false"
@@ -28,13 +35,27 @@
 			></uni-data-select>
 		</view>
 		<view>
-			<button type="primary" class="button" @click="">申报</button>
+			<button type="primary" class="button" @click="yuyue">申报</button>
 		</view>
 	</view>
 </template>
 
 <script>
+import { vipyy,cxbm,cxry } from '../../api/request'
 	export default {
+		onShow() {
+			cxbm().then(resp=>{
+				var list=resp.data.data
+				var result=[]
+				list.forEach(x=>{
+					result.push({
+						"text":x.deptName,
+						"value":x.deptId
+					})
+				})
+				this.range1=result
+			})
+		},
 		data() {
 			return {
 				isSame:true,
@@ -43,26 +64,49 @@
 					carnum:undefined,
 					company:undefined,
 					id:undefined,
+					visiteDepId:undefined,
 					visiteEmployeeId:undefined
 				},
 				value: 0,
 				range1: [
-					{ value: 0, text: "请选择"},
-				    { value: 1, text: "1" },
-				    { value: 2, text: "2" },
-				    { value: 3, text: "3" },
 				  ],
 				range2: [
-					{ value: 0, text: "请选择"},
-				    { value: 1, text: "1" },
-				    { value: 2, text: "2" },
-				    { value: 3, text: "3" },
 				  ],
 				
 			}
 		},
 		methods: {
-			
+			change(e) {
+			  cxry(e).then(resp=>{
+				  var list=resp.data.data
+				  var result=[]
+				  list.forEach(x=>{
+				  	result.push({
+				  		"text":x.name,
+				  		"value":x.id
+				  	})
+				  })
+				  this.range2=result
+			  })
+			},
+			yuyue(){
+				vipyy(this.data).then(resp=>{
+					if(resp.data.code==200){
+						
+						uni.showToast({
+							icon:"success",
+							title:"预约成功"
+						})
+						
+						setTimeout(x=>{
+							uni.navigateTo({
+								url:"/pages/yycg/yycg"
+							})
+						},1500)
+					}
+				},
+				)
+			}
 		}
 	}
 </script>
