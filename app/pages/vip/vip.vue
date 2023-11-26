@@ -18,7 +18,7 @@
 			<view class="c">访问部门</view>
 			<view class="d">
 				<uni-data-select
-				  v-model="data.visiteDepId"
+				  v-model="data.visiteDeptId"
 				  :localdata="range1"
 				  @change="change"
 				  :clear="false"
@@ -64,7 +64,7 @@ import { vipyy,cxbm,cxry } from '../../api/request'
 					carnum:undefined,
 					company:undefined,
 					id:undefined,
-					visiteDepId:undefined,
+					visiteDeptId:undefined,
 					visiteEmployeeId:undefined
 				},
 				value: 0,

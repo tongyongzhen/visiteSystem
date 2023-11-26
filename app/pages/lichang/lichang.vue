@@ -5,6 +5,9 @@
 			<image class="image2" src="../../static/ewm.png">
 		</view>
 		<view class="b">欢迎您的下次访问</view>
+		<view>
+			<button type="primary" class="button" @click="tuichu">退出</button>
+		</view>
 	</view>
 </template>
 
@@ -16,7 +19,11 @@
 			}
 		},
 		methods: {
-			
+			tuichu(){
+				uni.navigateTo({
+					url:"/pages/login/login"
+				})
+			}
 		}
 	}
 </script>
@@ -36,5 +43,11 @@
 		width: 200px;
 		height: 200px;
 		margin-top: 10px;
+	}
+	.button{
+		margin-top: 100px;
+		width: 100px;
+		height: 50px;
+		background-color: lightslategray;
 	}
 </style>
