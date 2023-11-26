@@ -36,4 +36,10 @@ public class User_Dept_Controller {
             @PathVariable("id") @ApiParam("传入的是部门id") Long id){
         return userService.queryAllDept(id);
     }
+
+    @GetMapping("/ofMe")
+    @ApiOperation("查询所登录用户的信息")
+    public Result ofMe(){
+        return userService.ofMe();
+    }
 }

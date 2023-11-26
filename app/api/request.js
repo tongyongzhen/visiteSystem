@@ -106,6 +106,15 @@ export function cxry(id){
 	})
 }
 
+//查询登录人员信息
+export function ofMe(){
+	return axios({
+		url:"/web/user_Dept/ofMe",
+		method:"get"
+		
+	})
+}
+
 
 
 

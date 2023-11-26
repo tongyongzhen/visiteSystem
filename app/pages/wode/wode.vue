@@ -1,8 +1,11 @@
 <template>
 	<view>
 		<view class="yonghu">
-			<view>
-				<image class="image1" src="../../static/tx.jpg"></image>{{name}}
+			<view style="display: flex;justify-content: center;align-items: center;">
+				<view style="width: 80px;height: 80px;display: flex;justify-content: center;align-items: center;">
+					<image class="image1" src="../../static/tx.jpg"></image></view>
+				<view style="margin-left: 20px;">{{loginUser.name}}</view>
+				
 				</view>
 			<view><image class="image2" src="../../static/ewm.png"></image></view>
 		</view>
@@ -54,10 +57,17 @@
 </template>
 
 <script>
+	
+	import {ofMe} from "../../api/request.js"
 	export default {
+		onShow() {
+			ofMe().then(resp=>{
+				this.loginUser=resp.data.data
+			})
+		},
 		data() {
 			return {
-				name:'Kanna'
+				loginUser:{}
 			};
 		}
 		
@@ -74,8 +84,8 @@
 		box-shadow:0 0 2rpx #000000;
 	}
 	.image1{
-		width: 100px;
-		height: 100px;
+		width: 90%;
+		height: 90%;
 		border-radius: 10rpx;
 		box-shadow:0 0 2rpx #000000;
 	}

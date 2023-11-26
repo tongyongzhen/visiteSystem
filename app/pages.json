@@ -1,5 +1,14 @@
 {
 	"pages": [{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
 		"path": "pages/zhuye/zhuye",
 		"style": {
 			"navigationBarTitleText": "主页"
@@ -31,15 +40,7 @@
             }
             
         }
-        ,{
-            "path" : "pages/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "登录",
-                "enablePullDownRefresh": false
-            }
-            
-        }
+        
         ,{
             "path" : "pages/yycg/yycg",
             "style" :                                                                                    
