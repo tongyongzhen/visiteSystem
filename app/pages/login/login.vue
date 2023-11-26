@@ -14,7 +14,7 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<button type="primary" @click="register">登录</button>
+			<button type="primary" @click="login">登录</button>
 		</view>
 		<view class="b">
 			<view @click="zhuce">立即注册</view>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-	// import {register} from "../../api/request.js"
+	import {login} from "../../api/request.js"
 	export default {
 		mounted() {
 		},
@@ -34,33 +34,27 @@
 				isSame:true,
 				passwordRepeat:undefined,
 				data:{
-					username:undefined,
 					password:undefined,
-					phone:undefined,
-					name:undefined
-					
+					phone:undefined
 				}
 				
 			}
 		},
 		methods: {
-			register(){
-				register(this.data).then(resp=>{
-					if(resp.data.code==200){
+			login(){
+				login(this.data).then(resp=>{
+					if(resp.data.code==200){				
+						sessionStorage.setItem("token",resp.data.data)
 						uni.showToast({
 							icon:"success",
 							title:"登录成功"
 						})
+						
 						setTimeout(x=>{
 							uni.navigateTo({
-								url:"/pages/wode/wode"
+								url:"/pages/zhuye/zhuye"
 							})
 						},1500)
-					}else{
-						uni.showToast({
-							icon:"error",
-							title:`${resp.data.msg}`
-						})
 					}
 				})
 			},

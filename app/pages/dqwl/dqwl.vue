@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="a">预约登记</view>
-		<view class="item">
+		<!-- <view class="item">
 			<view class="c">姓名</view>
 			<view class="d">
 				<input type="text" v-model="data.name" placeholder="请输入"/>
@@ -24,33 +24,33 @@
 			<view class="d">
 				<input type="text" v-model="data.name" placeholder="请输入"/>
 			</view>
-		</view>
+		</view> -->
 		<view class="c">当日进出次数</view>
 		<view>
 			<uni-data-select
-			  v-model="value"
+			  v-model="data.goOutCount"
 			  :localdata="range"
 			  @change="change"
 			  :clear="false"
 			></uni-data-select>
 		</view>
 		<view>
-			<button type="primary" class="button" @click="">申报</button>
+			<button type="primary" class="button" @click="yuyue">申报</button>
 		</view>
 	</view>
 </template>
 
 <script>
+	import { dqwlyy } from '../../api/request.js'
 	export default {
 		data() {
 			return {
 				isSame:true,
 				passwordRepeat:undefined,
 				data:{
-					username:undefined,
-					password:undefined,
-					phone:undefined,
-					name:undefined
+					code:undefined,
+					goOutCount:undefined,
+					userId:undefined
 				},
 				value: 0,
 				range: [
@@ -64,7 +64,24 @@
 		methods: {
 			change(e) {
 			  console.log("e:", e);
-			  }
+			},
+			yuyue(){
+				dqwlyy(this.data).then(resp=>{
+					if(resp.data.code==200){
+						
+						uni.showToast({
+							icon:"success",
+							title:"预约成功"
+						})
+						
+						setTimeout(x=>{
+							uni.navigateTo({
+								url:"/pages/yycg/yycg"
+							})
+						},1500)
+					}
+				})
+			}
 		}
 	}
 </script>

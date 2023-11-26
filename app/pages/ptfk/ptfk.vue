@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="a">预约登记</view>
-		<view class="item">
+		<!-- <view class="item">
 			<view class="c">姓名</view>
 			<view class="d">
 				<input type="text" v-model="data.name" placeholder="请输入"/>
@@ -12,81 +12,131 @@
 			<view class="d">
 				<input type="text" v-model="data.name" placeholder="请输入"/>
 			</view>
-		</view>
-		<view class="item">
+		</view> -->
+		<!-- <view class="item">
 			<view class="c">所属公司</view>
 			<view class="d">
 				<input type="text" v-model="data.name" placeholder="请输入"/>
 			</view>
-		</view>
+		</view> -->
 		<view class="item">
 			<view class="c">拜访部门</view>
 			<view class="d">
-				<input type="text" v-model="data.name" placeholder="请输入"/>
+				<uni-data-select
+				  v-model="data.visiteDeptId"
+				  :localdata="range1"
+				  @change="change"
+				  :clear="false"
+				></uni-data-select>
 			</view>
 		</view>
 		<view class="c">被访问人</view>
-		<view>
+		<view class="d">
 			<uni-data-select
-			  v-model="value"
-			  :localdata="range"
+			  v-model="data.visiteEmployeeId"
+			  :localdata="range2"
 			  @change="change"
 			  :clear="false"
 			></uni-data-select>
 		</view>
-		<view class="item">
+		<!-- <view class="item">
 			<view class="c">车牌号（可选填）</view>
 			<view class="d">
 				<input type="text" v-model="data.name" placeholder="请输入"/>
 			</view>
-		</view>
+		</view> -->
 		<view class="c">拜访时间段</view>
 		<view class="item">
 			<view class="right">
 				<view class="example-body">
-							<uni-datetime-picker type="date" :clear-icon="false" v-model="single" @maskClick="maskClick" />
+							<uni-datetime-picker type="date" :clear-icon="false" v-model="data.visiteStartTime" @maskClick="maskClick" />
 						</view>
 			</view>
 		</view>
 		<view class="item">
 			<view class="right">
 				<view class="example-body">
-							<uni-datetime-picker type="date" :clear-icon="false" v-model="single" @maskClick="maskClick" />
+							<uni-datetime-picker type="date" :clear-icon="false" v-model="data.visiteEndTime" @maskClick="maskClick" />
 						</view>
 			</view>
 		</view>
 		<view>
-			<button type="primary" class="button" @click="">提交</button>
+			<button type="primary" class="button" @click="yuyue">提交</button>
 		</view>
 		
 	</view>
 </template>
 
 <script>
+	import {ptfkyy,cxbm,cxry} from '../../api/request.js'
 	export default {
+		onShow() {
+			cxbm().then(resp=>{
+				var list=resp.data.data
+				var result=[]
+				list.forEach(x=>{
+					result.push({
+						"text":x.deptName,
+						"value":x.deptId
+					})
+				})
+				this.range1=result
+			})
+		},
 		data() {
 			return {
 				isSame:true,
 				passwordRepeat:undefined,
 				data:{
-					username:undefined,
-					password:undefined,
-					phone:undefined,
-					name:undefined
+					code:undefined,
+					isagree:undefined,
+					isgo:undefined,
+					isvisite:undefined,
+					userId:undefined,
+					visiteDeptId:undefined,
+					visiteEmployeeId:undefined,
+					visiteEndTime:undefined,
+					visiteStartTime:undefined
 				},
 				value: 0,
-				range: [
-					{ value: 0, text: "请选择"},
-				    { value: 1, text: "1" },
-				    { value: 2, text: "2" },
-				    { value: 3, text: "3" },
+				range1: [
 				  ],
+				range2:[
+				],
 			}
 		},
 		methods: {
 			change(e) {
-			  console.log("e:", e);
-			  }
+			  cxry(e).then(resp=>{
+				  var list=resp.data.data
+				  var result=[]
+				  list.forEach(x=>{
+				  	result.push({
+				  		"text":x.name,
+				  		"value":x.id
+				  	})
+				  })
+				  this.range2=result
+			  })
+			},
+			yuyue(){
+				ptfkyy(this.data).then(resp=>{
+					if(resp.data.code==200){
+						
+						uni.showToast({
+							icon:"success",
+							title:"预约成功"
+						})
+						
+						setTimeout(x=>{
+							uni.navigateTo({
+								url:"/pages/yycg/yycg"
+							})
+						},1500)
+					}
+				},
+				)
+			}
 		}
 	}
 </script>

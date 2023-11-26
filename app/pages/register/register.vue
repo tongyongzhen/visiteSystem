@@ -29,7 +29,7 @@
 		<view class="item">
 			<view class="left">车牌号</view>
 			<view class="right">
-				<input type="text" v-model="data.pai" placeholder="请输入车牌号"/>
+				<input type="text" v-model="data.carnum" placeholder="请输入车牌号"/>
 			</view>
 		</view>
 		<view class="item">

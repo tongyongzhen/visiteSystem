@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<view class="a">登记界面</view>
-		<view class="item">
+		<!-- <view class="item">
 			<view class="c">姓名</view>
 			<view class="d">
 				<input type="text" v-model="data.name" placeholder="请输入姓名"/>
@@ -18,31 +18,47 @@
 			<view class="d">
 				<input type="text" v-model="data.name" placeholder="请输入电话号码"/>
 			</view>
-		</view>
+		</view> -->
 		<view>
-			<button type="primary" class="button" @click="">登记</button>
+			<button type="primary" class="button" @click="yuyue">登记</button>
 		</view>
 	</view>
 </template>
 
 <script>
+import { cqwlyy } from '../../api/request'
 	export default {
 		data() {
 			return {
 				isSame:true,
 				passwordRepeat:undefined,
 				data:{
-					username:undefined,
-					password:undefined,
-					phone:undefined,
-					name:undefined
-					
+					// username:undefined,
+					// password:undefined,
+					// phone:undefined,
+					// name:undefined
 				}
 				
 			}
 		},
 		methods: {
-			
+			yuyue(){
+				cqwlyy(this.data).then(resp=>{
+					if(resp.data.code==200){
+						
+						uni.showToast({
+							icon:"success",
+							title:"预约成功"
+						})
+						
+						setTimeout(x=>{
+							uni.navigateTo({
+								url:"/pages/yycg/yycg"
+							})
+						},1500)
+					}
+				})
+			}
 		}
 	}
 </script>
@@ -75,7 +91,7 @@
 		margin-top: 10px;
 	}
 	.button{
-		margin-top: 50px;
+		margin-top: 200px;
 		width: 100px;
 		height: 50px;
 		background-color: lightslategray;

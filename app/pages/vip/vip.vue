@@ -8,10 +8,24 @@
 			</view>
 		</view>
 		<view class="item">
-			<view class="c">电话号码</view>
+			<view class="c">来访单位</view>
 			<view class="d">
-				<input type="text" v-model="data.name" placeholder="请输入电话号码"/>
+				<uni-data-select
+				  v-model="data.visiteDeptId"
+				  :localdata="range1"
+				  @change="change"
+				  :clear="false"
+				></uni-data-select>
 			</view>
+		</view>
+		<view class="c">被访问人</view>
+		<view class="d">
+			<uni-data-select
+			  v-model="data.visiteEmployeeId"
+			  :localdata="range2"
+			  @change="change"
+			  :clear="false"
+			></uni-data-select>
 		</view>
 		<view>
 			<button type="primary" class="button" @click="">申报</button>
@@ -26,12 +40,24 @@
 				isSame:true,
 				passwordRepeat:undefined,
 				data:{
-					username:undefined,
-					password:undefined,
-					phone:undefined,
-					name:undefined
-					
-				}
+					carnum:undefined,
+					company:undefined,
+					id:undefined,
+					visiteEmployeeId:undefined
+				},
+				value: 0,
+				range1: [
+					{ value: 0, text: "请选择"},
+				    { value: 1, text: "1" },
+				    { value: 2, text: "2" },
+				    { value: 3, text: "3" },
+				  ],
+				range2: [
+					{ value: 0, text: "请选择"},
+				    { value: 1, text: "1" },
+				    { value: 2, text: "2" },
+				    { value: 3, text: "3" },
+				  ],
 				
 			}
 		},
