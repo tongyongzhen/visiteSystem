@@ -1,23 +1,25 @@
 <template>
 	<view class="container">
 		<view class="a">{{"张三"}}</view>
-		<view class="a">{{123456789}}</view>
+		<view class="a">{{"123456789"}}</view>
 		<view class="a">{{"苏F000001"}}</view>
 		<view class="a">{{"百度公司"}}</view>
 		<view class="a">{{"普通访客"}}</view>
-		<view class="c">拜访时间段</view>
-		<view class="item">
-			<view class="right">
-				<view class="example-body">
-							<uni-datetime-picker type="date" :clear-icon="false" v-model="data.visiteStartTime" @maskClick="maskClick" />
-						</view>
+		<view v-if="loginUser.isEmployee==0">
+			<view class="c">拜访时间段</view>
+			<view class="item">
+				<view class="right">
+					<view class="example-body">
+								<uni-datetime-picker type="date" :clear-icon="false" v-model="data.visiteStartTime" @maskClick="maskClick" />
+							</view>
+				</view>
 			</view>
-		</view>
-		<view class="item">
-			<view class="right">
-				<view class="example-body">
-							<uni-datetime-picker type="date" :clear-icon="false" v-model="data.visiteEndTime" @maskClick="maskClick" />
-						</view>
+			<view class="item">
+				<view class="right">
+					<view class="example-body">
+								<uni-datetime-picker type="date" :clear-icon="false" v-model="data.visiteEndTime" @maskClick="maskClick" />
+							</view>
+				</view>
 			</view>
 		</view>
 		<view class="b">
@@ -33,7 +35,13 @@
 </template>
 
 <script>
+	import {ofMe} from "../../api/request.js"
 	export default {
+		onShow() {
+			ofMe().then(resp=>{
+				this.loginUser=resp.data.data
+			})
+		},
 		data() {
 			return {
 				data:{

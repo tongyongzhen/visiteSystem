@@ -140,6 +140,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/fyyxx/fyyxx",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
