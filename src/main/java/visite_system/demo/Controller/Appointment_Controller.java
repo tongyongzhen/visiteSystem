@@ -45,21 +45,21 @@ public class Appointment_Controller {
 
     @PostMapping("/VIPAppoint")
     @ApiOperation("VIP访客预约")
-    public Result vipAppoint(@RequestBody @Valid VipAppointment vipAppointment){
+    public Result vipAppoint(@RequestBody @Valid VipAppointment vipAppointment) throws Exception {
         return vipAppointmentService.vipAppoint(vipAppointment);
 
     }
 
     @PostMapping("/CarLongAppoint")
     @ApiOperation("长期物流司机预约")
-    public Result carLongAppoint(){
+    public Result carLongAppoint() throws Exception {
         return carLongAppointmentService.carLongAppoint();
 
     }
 
     @PostMapping("/CarShortAppoint")
     @ApiOperation("临时物流司机预约")
-    public Result carShortAppoint(@RequestBody @Valid CarShortAppointment carShortAppointment){
+    public Result carShortAppoint(@RequestBody @Valid CarShortAppointment carShortAppointment) throws Exception {
         return carShortAppointmentService.carShortAppoint(carShortAppointment);
 
     }

@@ -2,6 +2,7 @@ package visite_system.demo.Service.Impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 import visite_system.demo.Entity.CarLongAppointment;
 import visite_system.demo.Entity.CarLongRecord;
@@ -28,20 +29,29 @@ public class CarLongServiceImpl implements CarLongService {
     @Autowired
     private CarLong_RecordMapper carLongRecordMapper;
 
+
+
     @Override
-    public Result carLongAppoint() {
+    public Result carLongAppoint() throws Exception {
         User user = ThreadLocalUtil.get();
+        LambdaQueryWrapper<CarLongAppointment> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(CarLongAppointment::getUserId,user.getId());
+        CarLongAppointment one = carLongAppointmentMapper.selectOne(wrapper);
+        if(!ObjectUtils.isEmpty(one)){
+            throw new Exception("当前用户已登记");
+        }
         CarLongAppointment carLongAppointment = new CarLongAppointment();
         carLongAppointment.setUserId(user.getId());
         carLongAppointmentMapper.insert(carLongAppointment);
         //获取id
-        LambdaQueryWrapper<CarLongAppointment> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(CarLongAppointment::getUserId,user.getId());
-        CarLongAppointment one = carLongAppointmentMapper.selectOne(wrapper);
         //生成二维码
+        one = carLongAppointmentMapper.selectOne(wrapper);
         String qrCode = qrCodeUtils.createQrCode(String.valueOf(one.getId()));
         one.setCode(qrCode);
-        carLongAppointmentMapper.insert(one);
+        carLongAppointmentMapper.updateById(one);
+        CarLongRecord carLongRecord = CarLongRecord.builder().appointmentId(one.getId()).build();
+        carLongRecordMapper.insert(carLongRecord);
+
         return Result.ok(one);
     }
 
