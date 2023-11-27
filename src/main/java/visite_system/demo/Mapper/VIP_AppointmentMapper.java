@@ -11,4 +11,8 @@ import java.util.Map;
 
 public interface VIP_AppointmentMapper extends BaseMapper<VipAppointment> {
      List<VipExamineInfo> queryVipAppointmentByUserId(@Param("id") Long id);
+
+     List<VipExamineInfo> queryMyExamineByDeptId(@Param("deptId") Long deptId);
+
+     List<VipExamineInfo> queryAllExamin();
 }

@@ -35,7 +35,7 @@ public class BuildAppointment {
     @ApiModelProperty("审核人员id")
     private Long examinerId;
     @ApiModelProperty("是否拜访")
-    private Integer isvisit;
+    private Integer isvisite;
     @ApiModelProperty("是否离开")
     private Integer isgo;
     @ApiModelProperty("二维码")

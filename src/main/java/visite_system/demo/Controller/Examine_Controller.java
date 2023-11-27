@@ -33,6 +33,9 @@ public class Examine_Controller {
     @Autowired
     private BuildService buildService;
 
+    @Autowired
+    private GlobalService globalService;
+
     @PostMapping("/CommonExamine")
     @ApiOperation("普通访客审批")
     public Result commonExamine(@RequestBody @ApiParam(value = "至少传入id和isagree",required = true)
@@ -103,6 +106,12 @@ public class Examine_Controller {
             @ApiParam("所有字段都要传")
             @RequestBody CarLongRecord carLongRecord)throws Exception {
         return carLongService.carLongBaoAnExamine(carLongRecord);
+    }
+
+    @GetMapping("/queryMyExamine")
+    @ApiOperation("查询我的审批")
+    public Result queryMyExamine()throws Exception {
+        return globalService.queryMyExamine();
     }
 
 

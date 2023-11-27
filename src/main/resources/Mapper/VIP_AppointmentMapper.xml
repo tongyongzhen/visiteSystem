@@ -11,4 +11,17 @@
         ON e.appointment_id=a.id
         WHERE a.visite_employee_id=#{id}
     </select>
+    <select id="queryMyExamineByDeptId" resultType="visite_system.demo.Pojo.VipExamineInfo">
+        select e.*,a.carnum,a.company,a.appoint_time FROM vip_examine e
+        JOIN vip_appointment a
+        on e.appointment_id=a.id
+        JOIN `user` u
+        ON u.id=a.visite_employee_id
+        WHERE u.dept_id=#{deptId}
+    </select>
+    <select id="queryAllExamin" resultType="visite_system.demo.Pojo.VipExamineInfo">
+        select e.*,a.carnum,a.company,a.appoint_time FROM vip_examine e
+        JOIN vip_appointment a
+        on e.appointment_id=a.id
+    </select>
 </mapper>
