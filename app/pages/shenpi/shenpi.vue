@@ -1,90 +1,99 @@
 <template>
 	<view class="container">
 		<view class="a"><h1>审批</h1></view>
-		<!-- <view class="b">
-		    <uni-section title="用户" type="line">
-		      <uni-data-select
-		        v-model="value"
-		        :localdata="range1"
-		        @change="change"
-		      ></uni-data-select>
-		    </uni-section>
-			<view class="c">
-				<view>
-				<uni-section
-				  title="提示所属公司,
-				  车牌号,
-				  拜访空间"
-				  subTitle=""
-				  type="line"
-				> 
-				</uni-section></view>
-				<view ><button type="primary" class="button" @click="">同意</button></view>
-				<view ><button type="primary" class="button" @click="">拒绝</button></view>
+		<view v-for="(list,type) in ExamineInfo">
+			<view class="item" v-for="item in list" @click="toExamine(type,item)">
+				<view class="title">
+					<view class="content">{{visitType(type)}}</view>
+				</view>
+				<view class="time">{{item.appointTime}}</view>
 			</view>
-			
-		    <uni-section title="提示所属公司,车牌号,拜访空间" type="line">
-		      <uni-data-select
-		        v-model="value"
-		        :localdata="range2"
-		        @change="change"
-		        :clear="false"
-		      ></uni-data-select>
-		    </uni-section>
-		    <uni-section title="提示所属公司,车牌号,拜访空间" type="line">
-		      <uni-data-select
-		        v-model="value"
-		        :localdata="range3"
-		        @change="change"
-		        label="应用选择"
-		      ></uni-data-select>
-		    </uni-section>
-		  </view> -->
-		  <view class="c" @click="shenpi">
-			<view>{{list}}</view>
-		  </view>
+		</view>
+		  
 		 
 	</view>
 </template>
 
 <script>
-	import {cxwdsp} from '../../api/request.js'
+	import {cxwdsp,queryUserById} from '../../api/request.js'
 	export default {
 		onShow() {
 			cxwdsp().then(resp=>{
 				if(resp.data.code==200){
-					this.list=resp.data.data
-					var result=[]
-					list.forEach(x=>{
-						result.push({
-							"text":x.appointmentId,
-							"value":x.id
-						})
-					})
-					this.range1=result
+					this.ExamineInfo=resp.data.data
 				}
 			})
 		},
 	data() {
       return {
-		  list:[]
+		  ExamineInfo:{}
 	
       };
     },
     methods: {
-      // change(e) {
-      //   console.log("e:", e);
-      // },
 	  shenpi(){
 		  uni.navigateTo({
 		  	url:"/pages/fshenpi/fshenpi"
 		  })
+	  },
+	  /**
+	   * 判断是什么访客类型
+	   */
+	  
+	  visitType(type){
+		  switch(type){
+			  case "0":
+				return "普通"
+				break;
+			  case "1":
+				return "vip"
+				break;
+			  case "2":
+				return "临时"
+				break;
+			  case "3":
+				return "长期"
+				break;
+			  case "4":
+				return "建筑"
+				break;
+		  }
+	  },
+	  toExamine(type,data){
+		  switch(type){
+			  case "0":
+				uni.navigateTo({
+					url:"/pages/examine/commonExamine?data="+JSON.stringify(data)
+				})
+				break;
+			  case "1":
+				uni.navigateTo({
+					url:"/pages/examine/vipExamine?data="+JSON.stringify(data)
+				})
+				break;
+			  case "2":
+				uni.navigateTo({
+					url:"/pages/examine/carLongExamine?data="+JSON.stringify(data)
+				})
+				break;
+			  case "3":
+				uni.navigateTo({
+					url:"/pages/examine/carShortExamine?data="+JSON.stringify(data)
+				})
+				break;
+			  case "4":
+				uni.navigateTo({
+					url:"/pages/examine/buildExamine?data="+JSON.stringify(data)
+				})
+				break;
+		  }
 	  }
+	
     },
   };
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.container {
 		padding: 20px;
 		font-size: 14px;
@@ -93,7 +102,7 @@
 	.a{
 		color: seagreen;
 		text-align: center;
-		margin-top: 20px;
+		
 	}
 	/* .b{
 		margin-top: 20px;
@@ -110,4 +119,26 @@
 		background-color: white;
 		color: black;
 	} */
+	
+	.item{
+		display: flex;
+		justify-content: space-between;
+		box-shadow:0 0 2rpx #000000;
+		align-items: center;
+		margin-top: 10px;
+		.title{
+			width: 50px;
+			height: 50px;
+			background-color: #00aaff;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.content{
+				color: aliceblue;
+				font-size: 20px;
+			}
+		
+		}
+	}
 </style>

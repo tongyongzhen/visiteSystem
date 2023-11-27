@@ -177,7 +177,7 @@
             
         }
         ,{
-            "path" : "pages/examine/caShortExamine",
+            "path" : "pages/examine/carShortExamine",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
