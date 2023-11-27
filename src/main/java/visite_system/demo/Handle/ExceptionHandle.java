@@ -13,8 +13,8 @@ import java.net.BindException;
 /**
  * 全局异常处理器
  */
-@ControllerAdvice
-@ResponseBody
+//@ControllerAdvice
+//@ResponseBody
 public class ExceptionHandle {
 
     @ExceptionHandler(value = {Exception.class})

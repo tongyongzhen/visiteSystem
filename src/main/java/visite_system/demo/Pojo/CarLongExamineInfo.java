@@ -1,24 +1,15 @@
-package visite_system.demo.Entity;
+package visite_system.demo.Pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Builder
+import java.util.Date;
+
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@TableName("car_short_record")
-@ApiModel("长期物流司机进出记录")
-public class CarShortRecord {
-    @TableId
+public class CarLongExamineInfo {
     @ApiModelProperty("id")
     private Long id;
     @ApiModelProperty("预约id")
@@ -43,4 +34,10 @@ public class CarShortRecord {
     private String picture;
     @ApiModelProperty("拍摄人员id")
     private Long cameramanId;
+    @ApiModelProperty("预约时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date appointTime;
+    @ApiModelProperty("预约人员id")
+    private Long userId;
 }

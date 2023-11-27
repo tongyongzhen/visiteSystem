@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="visite_system.demo.Mapper.CarLong_AppointmentMapper">
+
+
+    <select id="queryMyExamine" resultType="visite_system.demo.Pojo.CarLongExamineInfo">
+        SELECT r.*,a.appoint_time,a.user_id FROM `car_long_record` r
+        JOIN car_long_appointment a
+        on r.appointment_id=a.id
+    </select>
+</mapper>

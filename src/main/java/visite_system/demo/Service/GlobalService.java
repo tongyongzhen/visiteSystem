@@ -6,4 +6,6 @@ public interface GlobalService {
     Result queryMyAppointment();
 
     Result queryCodeById(Long id);
+
+    Result queryMyExamine();
 }
