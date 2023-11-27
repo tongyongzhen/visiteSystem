@@ -127,20 +127,25 @@ public class GlobalServiceImpl implements GlobalService {
     }
 
     @Override
-    public Result queryMyExamine() {
+    public Result queryMyExamine() throws Exception {
         User user = ThreadLocalUtil.get();
         Long id = user.getId();
+        //是否是内部人员
+        if(user.getIsEmployee()==1){
+            throw new Exception("不是内部人员,没有权限");
+        }
+
         //普通访客
         LambdaQueryWrapper<CommonAppointment> commonAppointmentLambdaQueryWrapper = new LambdaQueryWrapper<>();
         commonAppointmentLambdaQueryWrapper.eq(CommonAppointment::getVisiteEmployeeId,id);
         List<CommonAppointment> commonAppointments = commonAppointmentMapper.selectList(commonAppointmentLambdaQueryWrapper);
         //查询登录者是否是部门部长
-        List<CarLongExamineInfo> carLongExamineInfos=null;
-        List<CarShortExamineInfo> carShortExamineInfos=null;
+        List<CarLongExamineInfo> carLongExamineInfos=new ArrayList<>();
+        List<CarShortExamineInfo> carShortExamineInfos=new ArrayList<>();
         Dept dept = deptMapper.selectById(user.getId());
         Set vipExamineInfos=new HashSet();
         if(dept.getManagerId()==id){
-            List<VipExamineInfo> vipExamineInfo=null;
+            List<VipExamineInfo> vipExamineInfo=new ArrayList<>();
             //是部长
             //vip访客
             if(dept.getDeptId()==3){
