@@ -7,5 +7,5 @@ public interface GlobalService {
 
     Result queryCodeById(Long id);
 
-    Result queryMyExamine();
+    Result queryMyExamine() throws Exception;
 }
