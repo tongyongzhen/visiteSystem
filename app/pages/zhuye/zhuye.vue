@@ -1,5 +1,5 @@
 <template>
-	<view >
+	<view>
 		<view class="container">
 			<button type="primary" class="button1" @click="yuyue">预约</button>
 		</view>
@@ -105,5 +105,9 @@
 		border-radius: 50%;
 		border: solid;
 		line-height: 5;
+	}
+	.building{
+		background: url(../../static/tx.jpg);
+		background-size: 100;
 	}
 </style>

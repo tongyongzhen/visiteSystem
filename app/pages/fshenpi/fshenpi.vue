@@ -44,9 +44,10 @@
 		},
 		data() {
 			return {
+				loginUser:{},
 				data:{
 					visiteEndTime:undefined,
-					visiteStartTime:undefined
+					visiteStartTime:undefined,
 				}
 			}
 		},
