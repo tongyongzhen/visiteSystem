@@ -49,10 +49,10 @@
 				return "vip"
 				break;
 			  case "2":
-				return "临时"
+				return "长期"
 				break;
 			  case "3":
-				return "长期"
+				return "临时"
 				break;
 			  case "4":
 				return "建筑"

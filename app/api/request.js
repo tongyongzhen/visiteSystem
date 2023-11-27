@@ -182,6 +182,24 @@ export function queryCodeById(id){
 		
 	})
 }
+//普通审批
+export function commonExamine(data){
+	return axios({
+		url:"/web/Examine/CommonExamine",
+		method:"post",
+		data:data
+		
+	})
+}
+//建筑工人审批
+export function buildExamine(data){
+	return axios({
+		url:"/web/Examine/BuildExamine",
+		method:"post",
+		data:data
+		
+	})
+}
 
 
 

@@ -49,14 +49,16 @@
 		<view class="item">
 			<view class="right">
 				<view class="example-body">
-							<uni-datetime-picker type="date" :clear-icon="false" v-model="data.visiteStartTime" @maskClick="maskClick" />
+					<uni-datetime-picker v-model="data.visiteStartTime" />
+							
 						</view>
 			</view>
 		</view>
 		<view class="item">
 			<view class="right">
 				<view class="example-body">
-							<uni-datetime-picker type="date" :clear-icon="false" v-model="data.visiteEndTime" @maskClick="maskClick" />
+					<uni-datetime-picker v-model="data.visiteEndTime" />
+							
 						</view>
 			</view>
 		</view>

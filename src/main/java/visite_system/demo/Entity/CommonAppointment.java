@@ -35,8 +35,12 @@ public class CommonAppointment {
     @NotNull
     private Long visiteEmployeeId;
     @ApiModelProperty("访问开始时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date visiteStartTime;
     @ApiModelProperty("访问结束时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date visiteEndTime;
     @ApiModelProperty("审核是否同意，0-同意，1-不同意")
     private Integer isagree;
