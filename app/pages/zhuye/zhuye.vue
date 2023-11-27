@@ -13,7 +13,7 @@
 </template>
 
 <script>
-	import {ofMe} from "../../api/request.js"
+	import {cxwdsp, ofMe} from "../../api/request.js"
 	
 	export default {
 		onShow() {
@@ -23,7 +23,8 @@
 		},
 		data() {
 			return {
-				loginUser:{}	
+				loginUser:{},
+				
 			}
 		},
 		methods:{

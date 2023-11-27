@@ -148,6 +148,15 @@ export function sgrysp(){
 	})
 }
 
+//查询我的审批
+export function cxwdsp(){
+	return axios({
+		url:"/web/Examine/queryMyExamine",
+		method:"get"
+		
+	})
+}
+
 //根据部门id查询部门信息
 export function queryDeptById(id){
 	return axios({

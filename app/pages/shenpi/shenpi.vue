@@ -41,56 +41,34 @@
 		    </uni-section>
 		  </view> -->
 		  <view class="c" @click="shenpi">
-			<view>张三</view>
-		  	<view>12345678</view>
-		  	<view>></view>
+			<view>{{list}}</view>
 		  </view>
-		  <view class="c">
-		  			<view>张三</view>
-		  	<view>12345678</view>
-		  	<view>></view>
-		  </view>
-		  <view class="c">
-		  			<view>张三</view>
-		  	<view>12345678</view>
-		  	<view>></view>
-		  </view>
-		  <view class="c">
-		  			<view>张三</view>
-		  	<view>12345678</view>
-		  	<view>></view>
-		  </view>
-		  <view class="c">
-		  			<view>张三</view>
-		  	<view>12345678</view>
-		  	<view>></view>
-		  </view>
+		 
 	</view>
 </template>
 
 <script>
+	import {cxwdsp} from '../../api/request.js'
 	export default {
-    data() {
+		onShow() {
+			cxwdsp().then(resp=>{
+				if(resp.data.code==200){
+					this.list=resp.data.data
+					var result=[]
+					list.forEach(x=>{
+						result.push({
+							"text":x.appointmentId,
+							"value":x.id
+						})
+					})
+					this.range1=result
+				}
+			})
+		},
+	data() {
       return {
-  //       value: 0,
-  //       range1: [
-		//   { value: 0, text: "请选择"},
-  //         { value: 1, text: "篮球" },
-  //         { value: 2, text: "足球" },
-  //         { value: 3, text: "游泳" },
-  //       ],
-		// range2: [
-		//   { value: 0, text: "请选择"},
-		//   { value: 1, text: "篮球" },
-		//   { value: 2, text: "足球" },
-		//   { value: 3, text: "游泳" },
-		// ],
-		// range3: [
-		//   { value: 0, text: "请选择"},
-		//   { value: 1, text: "篮球" },
-		//   { value: 2, text: "足球" },
-		//   { value: 3, text: "游泳" },
-		// ],
+		  list:[]
+	
       };
     },
     methods: {
