@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 import visite_system.demo.Entity.*;
 import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.*;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -60,15 +62,13 @@ public class Examine_Controller {
 
     }
 
-    @GetMapping("/CarLongPictureUp")
+    @PostMapping("/CarLongPictureUp")
     @ApiOperation("长期物流司机货物照片上传")
-    public Result carLongPictureUp(@ApiParam(value = "传的是审批id不是登记id",required = true)
-                                       @NotNull(message = "id不能为空")
-                                               Long id, MultipartFile multipartFile)throws Exception {
-        return carLongService.carLongPictureUp(id,multipartFile);
+    public Result carLongPictureUp(HttpServletRequest request)throws Exception {
+        return carLongService.carLongPictureUp(request);
     }
 
-    @GetMapping("/carShortPictureUp")
+    @PostMapping("/carShortPictureUp")
     @ApiOperation("短期物流司机货物照片上传")
     public Result carShortPictureUp(@ApiParam(value = "传的是审批id不是登记id",required = true)
                                    @NotNull(message = "id不能为空")

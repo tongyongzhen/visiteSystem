@@ -5,10 +5,12 @@ import visite_system.demo.Entity.CarLongAppointment;
 import visite_system.demo.Entity.CarLongRecord;
 import visite_system.demo.Pojo.Result;
 
+import javax.servlet.http.HttpServletRequest;
+
 public interface CarLongService {
     Result carLongAppoint() throws Exception;
 
-    Result carLongPictureUp(Long id,MultipartFile multipartFile);
+    Result carLongPictureUp(HttpServletRequest request);
 
     Result carLongPictureExamine(CarLongRecord carLongRecord);
 
