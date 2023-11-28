@@ -124,8 +124,8 @@ import {sgryyy,cxbm,cxry} from '../../api/request.js'
 						})
 						
 						setTimeout(x=>{
-							uni.navigateTo({
-								url:"/pages/yycg/yycg"
+							uni.switchTab({
+								url:"/pages/zhuye/zhuye"
 							})
 						},1500)
 					}

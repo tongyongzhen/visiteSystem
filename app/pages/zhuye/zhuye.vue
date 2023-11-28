@@ -1,5 +1,8 @@
 <template>
 	<view>
+		<view v-if="loginUser.deptId==5">
+			<button type="primary" class="button4" @click="scan">扫一扫</button>
+		</view>
 		<view class="container">
 			<button type="primary" class="button1" @click="yuyue">预约</button>
 		</view>
@@ -13,7 +16,7 @@
 </template>
 
 <script>
-	import {cxwdsp, ofMe} from "../../api/request.js"
+	import {cxwdsp, ofMe,} from "../../api/request.js"
 	
 	export default {
 		onShow() {
@@ -24,6 +27,7 @@
 		data() {
 			return {
 				loginUser:{},
+				deptById:{}
 				
 			}
 		},
@@ -68,6 +72,11 @@
 				uni.navigateTo({
 					url:"/pages/lichang/lichang"
 				})
+			},
+			scan(){
+				uni.navigateTo({
+					url:"/pages/scan/scan"
+				})
 			}
 		}
 	}
@@ -107,8 +116,18 @@
 		border: solid;
 		line-height: 5;
 	}
+	.button4{
+		margin-left: 450px;
+		color: hotpink;
+		background-color: white;
+		width: 100px;
+		height: 50px;
+		border: soild;
+		
+	}
 	.building{
 		background: url(../../static/tx.jpg);
 		background-size: 100;
 	}
+	
 </style>
