@@ -101,7 +101,7 @@
 				}
 				//为内部人员
 				if(this.loginUser.isEmployee==0){
-					if(this.appointmentData.visiteDeptOpinion==null || this.appointmentData.renshiOpinion==null ||this.appointmentData.manageOpinion==null){
+					if(this.appointmentData.visiteDeptOpinion!=1 &&  this.appointmentData.renshiOpinion!=1 && this.appointmentData.manageOpinion==null){
 						return true
 					}else{
 						return false

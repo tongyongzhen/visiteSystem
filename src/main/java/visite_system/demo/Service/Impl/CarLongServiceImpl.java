@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import visite_system.demo.Entity.CarLongAppointment;
 import visite_system.demo.Entity.CarLongRecord;
 import visite_system.demo.Entity.User;
@@ -14,8 +15,11 @@ import visite_system.demo.Mapper.CarLong_RecordMapper;
 import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.CarLongService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -58,7 +62,12 @@ public class CarLongServiceImpl implements CarLongService {
     }
 
     @Override
-    public Result carLongPictureUp(Long id,MultipartFile multipartFile) {
+    public Result carLongPictureUp(HttpServletRequest request) {
+        Long id = Long.parseLong(request.getParameter("id"));
+        MultipartHttpServletRequest req = (MultipartHttpServletRequest) request;
+        //对应前端的upload的name参数"file"
+        MultipartFile multipartFile = req.getFile("file");
+
         User user = ThreadLocalUtil.get();
         //获取文件名
         String fileName = multipartFile.getOriginalFilename();

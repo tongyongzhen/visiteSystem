@@ -200,6 +200,38 @@ export function buildExamine(data){
 		
 	})
 }
+//vip审批
+export function vipExamine(data){
+	return axios({
+		url:"/web/Examine/VipExamine",
+		method:"post",
+		data:data
+		
+	})
+}
+
+//长期建筑工人图片上传
+export function carLongPictureUp(data){
+	return axios({
+		url:"/web/Examine/CarLongPictureUp",
+		method:"post",
+		data:data
+	})
+}
+//上传图片
+export function uploadFile(file){
+	return uni.uploadFile({
+		url:"http://localhost:90/Examine/CarLongPictureUp",
+		filePath:file.path,
+		name:"file",
+		formData:{
+			targetId: new Date().valueOf(),
+			filePath: file.path
+			}
+		
+	})
+
+}
 
 
 

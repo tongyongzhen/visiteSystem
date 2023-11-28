@@ -142,7 +142,7 @@ public class GlobalServiceImpl implements GlobalService {
         //查询登录者是否是部门部长
         List<CarLongExamineInfo> carLongExamineInfos=new ArrayList<>();
         List<CarShortExamineInfo> carShortExamineInfos=new ArrayList<>();
-        Dept dept = deptMapper.selectById(user.getId());
+        Dept dept = deptMapper.selectById(user.getDeptId());
         Set vipExamineInfos=new HashSet();
         if(dept.getManagerId()==id){
             List<VipExamineInfo> vipExamineInfo=new ArrayList<>();

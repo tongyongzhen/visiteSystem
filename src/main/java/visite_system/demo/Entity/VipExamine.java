@@ -33,7 +33,7 @@ public class VipExamine {
     @ApiModelProperty("人事id")
     private Long renshiId; // 人事id
     @ApiModelProperty("申请部门审批者id ")
-    private Long visiteDeptId; // 申请部门id
+    private Long deptExamineId; // 申请部门id
     @ApiModelProperty("二维码")
     private String code; // 二维码
     @ApiModelProperty("是否离开 0-离开 1-未离开")
