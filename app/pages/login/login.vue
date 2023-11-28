@@ -4,13 +4,13 @@
 		<view class="item">
 			<view class="left">手机号</view>
 			<view class="right">
-				<input type="text" v-model="data.phone" placeholder="请输入手机号"/>
+				<input type="text" v-model="data.phone" placeholder="请输入手机号" @input="change"/>
 			</view>
 		</view>
 		<view class="item">
 			<view class="left">密码</view>
 			<view class="right">
-				<input type="password" v-model="data.password" placeholder="请输入密码"/>
+				<input type="password" v-model="data.password" placeholder="请输入密码" @input="change"/>
 			</view>
 		</view>
 		<view class="bottom">
@@ -42,6 +42,13 @@
 		},
 		methods: {
 			login(){
+				const v=uni.createInnerAudioContext();
+				v.autoplay=true
+				v.src="../../static/gm.mp3"
+				v.onError(resp=>{
+					console.log(resp)
+				})
+
 				login(this.data).then(resp=>{
 					if(resp.data.code==200){				
 						sessionStorage.setItem("token",resp.data.data)
@@ -56,6 +63,14 @@
 							})
 						},1500)
 					}
+				})
+			},
+			change(){
+				const v=uni.createInnerAudioContext();
+				v.autoplay=true
+				v.src="../../static/j.mp3"
+				v.onError(resp=>{
+					console.log(resp)
 				})
 			},
 			zhuce(){
