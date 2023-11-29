@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="box">
 		<view class="yonghu">
 			<view style="display: flex;justify-content: center;align-items: center;">
 				<view style="width: 80px;height: 80px;display: flex;justify-content: center;align-items: center;">
@@ -45,7 +45,7 @@
 			</view>
 			<view>></view>
 		</view>
-		<view class="item">
+		<view class="item" @click="fwjl">
 			<view>
 				<image class="image3" src="../../static/fwjl.png"></image>访问记录
 			</view>
@@ -75,6 +75,11 @@
 				uni.navigateTo({
 					url:"/pages/wdyy/wdyy"
 				})
+			},
+			fwjl(){
+				uni.navigateTo({
+					url:"/pages/fwjl/fwjl"
+				})
 			}
 		}
 		
@@ -82,6 +87,7 @@
 </script>
 
 <style lang="scss" scoped>
+	
 	.yonghu{
 		display: flex;
 		justify-content: space-between;
@@ -137,4 +143,12 @@
 				background-color: green;
 			}
 		}
+		// .box{
+		// 	height: 1px;
+		// }
+</style>
+<style>
+	page{
+		background-image: url('../../static/wd.jpg');
+	}
 </style>

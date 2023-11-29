@@ -91,30 +91,39 @@
 	}
 	.button1{
 		color: red;
-		background-color: white;
+		background-color: #fdd5d5;
 		width: 100px;
 		height: 100px;
 		border-radius: 50%;
 		border: solid;
+		border-width: 1px;
 		line-height: 5;
+		margin-top: 20px;
+		border-color: white;
 	}
 	.button2{
 		color: green;
-		background-color: white;
+		background-color: #fddbd9;
 		width: 100px;
 		height: 100px;
 		border-radius: 50%;
 		border: solid;
+		border-width: 1px;
 		line-height: 5;
+		margin-top: 20px;
+		border-color: white;
 	}
 	.button3{
-		color: blue;
-		background-color: white;
+		color: cornflowerblue;
+		background-color: #fddfdd;
 		width: 100px;
 		height: 100px;
 		border-radius: 50%;
 		border: solid;
+		border-width: 1px;
 		line-height: 5;
+		margin-top: 20px;
+		border-color: white;
 	}
 	.button4{
 		margin-left: 450px;
@@ -130,4 +139,9 @@
 		background-size: 100;
 	}
 	
+</style>
+<style>
+	page{
+		background:url("../../static/zy.jpg")
+	}
 </style>
