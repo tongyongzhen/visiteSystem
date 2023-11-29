@@ -203,6 +203,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/fwjl/fwjl",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

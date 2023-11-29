@@ -13,8 +13,8 @@
 				<input type="password" v-model="data.password" placeholder="请输入密码" @input="change"/>
 			</view>
 		</view>
-		<view class="bottom">
-			<button type="primary" @click="login">登录</button>
+		<view >
+			<button class="bottom" type="primary" @click="login">登录</button>
 		</view>
 		<view class="b">
 			<view @click="zhuce">立即注册</view>
@@ -99,6 +99,11 @@
 		}
 	}
 </script>
+<style>
+	page{
+		background: url("../../static/dl.png");
+	}
+</style>
 
 <style>
 	input {
@@ -114,6 +119,7 @@
 		margin-top: 30px;
 		margin-bottom: 40px;
 	}
+	
 </style>
 
 <style lang="scss" scoped>
@@ -149,6 +155,7 @@
 		
 		.bottom{
 			margin-top: 40px;
+			background:linear-gradient(white, pink, grey);
 		}
 		
 		.b{
