@@ -3,7 +3,7 @@
 		<view class="yonghu">
 			<view style="display: flex;justify-content: center;align-items: center;">
 				<view style="width: 80px;height: 80px;display: flex;justify-content: center;align-items: center;">
-					<image class="image1" src="../../static/tx.jpg"></image></view>
+					<image class="image1" src="../../static/touxiang.png"></image></view>
 				<view style="margin-left: 20px;">{{loginUser.name}}</view>
 				
 				</view>
