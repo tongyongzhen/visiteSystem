@@ -189,4 +189,24 @@ public class GlobalServiceImpl implements GlobalService {
         return Result.ok(hashMap);
     }
 
+    @Override
+    public Result queryVisitMe() throws Exception {
+        User user = ThreadLocalUtil.get();
+        if(user.getIsEmployee()==1){
+            throw new Exception("不是内部人员");
+        }
+        //普通访客
+        LambdaQueryWrapper<CommonAppointment> commonAppointmentLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        commonAppointmentLambdaQueryWrapper
+                .eq(CommonAppointment::getVisiteEmployeeId,user.getId())
+                .eq(CommonAppointment::getIsagree,0);                ;
+        List<CommonAppointment> commonAppointments = commonAppointmentMapper.selectList(commonAppointmentLambdaQueryWrapper);
+        //vip访客
+        List<VipExamineInfo> vipExamineInfos = vipAppointmentMapper.queryVisitMe(user.getId());
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("0",commonAppointments);
+        hashMap.put("1",vipExamineInfos);
+        return Result.ok(vipExamineInfos);
+    }
+
 }

@@ -22,7 +22,8 @@
     "pages/examine/carLongExamine",
     "pages/examine/carShortExamine",
     "pages/examine/buildExamine",
-    "pages/scan/scan"
+    "pages/scan/scan",
+    "pages/fwjl/fwjl"
   ],
   "subPackages": [],
   "window": {

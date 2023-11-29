@@ -54,3 +54,8 @@
   background-color: green;
 }
 
+
+page{
+	background-image: url(/static/wd.jpg);
+}
+

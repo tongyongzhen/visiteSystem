@@ -15,4 +15,6 @@ public interface VIP_AppointmentMapper extends BaseMapper<VipAppointment> {
      List<VipExamineInfo> queryMyExamineByDeptId(@Param("deptId") Long deptId);
 
      List<VipExamineInfo> queryAllExamin();
+
+     List<VipExamineInfo> queryVisitMe(Long id);
 }

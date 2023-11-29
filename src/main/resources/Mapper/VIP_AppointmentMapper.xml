@@ -24,4 +24,11 @@
         JOIN vip_appointment a
         on e.appointment_id=a.id
     </select>
+    <select id="queryVisitMe" resultType="visite_system.demo.Pojo.VipExamineInfo">
+        select e.*,a.carnum,a.company,a.appoint_time,a.visite_employee_id,a.visite_dept_id FROM vip_examine e
+        JOIN vip_appointment a
+        on e.appointment_id=a.id
+        where a.visite_employee_id=#{id}
+        and e.code is not null
+    </select>
 </mapper>

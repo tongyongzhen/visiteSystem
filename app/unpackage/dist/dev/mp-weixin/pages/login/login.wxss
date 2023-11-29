@@ -1,4 +1,9 @@
 
+page{
+	background: url(/static/dl.png);
+}
+
+
 input {
 	width: 200px;
 	border-radius: 5rpx;
@@ -12,6 +17,7 @@ input {
 	margin-top: 30px;
 	margin-bottom: 40px;
 }
+
 
 @charset "UTF-8";
 /* 水平间距 */
@@ -44,6 +50,7 @@ input {
 }
 .bottom.data-v-b237504c {
   margin-top: 40px;
+  background: linear-gradient(white, pink, grey);
 }
 .b.data-v-b237504c {
   display: flex;
