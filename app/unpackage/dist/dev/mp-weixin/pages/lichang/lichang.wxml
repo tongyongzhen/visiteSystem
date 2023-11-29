@@ -1,0 +1,1 @@
+<view><view class="b">离场二维码</view><view class="c"><image class="image2" src="../../static/ewm.png"></image></view><view class="b">欢迎您的下次访问</view><view><button class="button" type="primary" data-event-opts="{{[['tap',[['tuichu',['$event']]]]]}}" bindtap="__e">退出</button></view></view>

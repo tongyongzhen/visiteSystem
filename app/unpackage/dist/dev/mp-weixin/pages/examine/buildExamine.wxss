@@ -1,0 +1,21 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.item.data-v-5341e70c {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 18px;
+}
+.item .title.data-v-5341e70c {
+  margin-left: 5px;
+}
+.item .content.data-v-5341e70c {
+  margin-right: 5px;
+}
+.bottom.data-v-5341e70c {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+

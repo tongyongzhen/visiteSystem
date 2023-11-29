@@ -1,5 +1,6 @@
 package visite_system.demo.Service.Impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
@@ -12,6 +13,7 @@ import visite_system.demo.GlobalUtils.QrCodeUtils;
 import visite_system.demo.GlobalUtils.ThreadLocalUtil;
 import visite_system.demo.Mapper.CarLong_AppointmentMapper;
 import visite_system.demo.Mapper.CarLong_RecordMapper;
+import visite_system.demo.Pojo.CarPicture;
 import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.CarLongService;
 
@@ -62,43 +64,26 @@ public class CarLongServiceImpl implements CarLongService {
     }
 
     @Override
-    public Result carLongPictureUp(HttpServletRequest request) {
-        Long id = Long.parseLong(request.getParameter("id"));
-        MultipartHttpServletRequest req = (MultipartHttpServletRequest) request;
-        //对应前端的upload的name参数"file"
-        MultipartFile multipartFile = req.getFile("file");
-
-        User user = ThreadLocalUtil.get();
-        //获取文件名
-        String fileName = multipartFile.getOriginalFilename();
-        //获取文件后缀名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        //重新生成文件名
-        fileName = UUID.randomUUID()+suffixName;
-        //指定本地文件夹存储图片，写到需要保存的目录下
-        String filePath = "E:\\ProjectStudy\\";
-        String newFileName=filePath+fileName;
-        try {
-            //将图片保存到static文件夹里
-            multipartFile.transferTo(new File(newFileName));
-            CarLongRecord carLongRecord = carLongRecordMapper.selectById(id);
-            carLongRecord.setPicture(newFileName);
-            carLongRecord.setCameramanId(user.getId());
-            carLongRecordMapper.updateById(carLongRecord);
-            //返回提示信息
-            return Result.ok();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.fail(500,e.getMessage());
-        }
-
+    public Result carLongPictureUp(CarPicture carPicture) {
+        Long id = carPicture.getId();
+        CarLongRecord carLongRecord = carLongRecordMapper.selectById(id);
+        //获取base64编码
+        String base64 = carPicture.getImage();
+        //组装
+        String picture="data:image/png;base64,"+base64;
+        carLongRecord.setPicture(picture);
+        carLongRecordMapper.updateById(carLongRecord);
+        return Result.ok();
     }
 
     @Override
     public Result carLongPictureExamine(CarLongRecord carLongRecord) {
         User user = ThreadLocalUtil.get();
         carLongRecord.setExamineId(user.getId());
-        carLongRecordMapper.updateById(carLongRecord);
+        LambdaUpdateWrapper<CarLongRecord> wrapper = new LambdaUpdateWrapper<>();
+        wrapper.set(CarLongRecord::getExamineId,user.getId())
+                .set(CarLongRecord::getExamineResult,carLongRecord.getExamineResult());
+        carLongRecordMapper.update(carLongRecord,wrapper);
         return Result.ok();
     }
 
@@ -108,5 +93,11 @@ public class CarLongServiceImpl implements CarLongService {
         carLongRecord.setExamineId(user.getId());
         carLongRecordMapper.updateById(carLongRecord);
         return Result.ok();
+    }
+
+    @Override
+    public Result queryLongPictureById(Long id) {
+        CarLongRecord carLongRecord = carLongRecordMapper.selectById(id);
+        return Result.ok(carLongRecord.getPicture());
     }
 }

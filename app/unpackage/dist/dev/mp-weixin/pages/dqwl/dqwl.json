@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "短期物流",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select"
+  }
+}

@@ -1,0 +1,44 @@
+
+.a{
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+.b{
+	text-align: center;
+	margin-top: 30px;
+	font-size: 20px;
+	color: red;
+}
+.c{
+	text-align: center;
+}
+.image2{
+	width: 200px;
+	height: 200px;
+	margin-top: 10px;
+}
+.example-body {
+		background-color: white;
+		padding: 5px;
+		width: 200px;
+}
+
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.item.data-v-502ff0f4 {
+  font-size: 20px;
+  margin: 20px 30px;
+  margin-top: 10px;
+  display: flex;
+}
+.item .left.data-v-502ff0f4 {
+  width: 80px;
+}
+.item .right.data-v-502ff0f4 {
+  margin-left: 10px;
+  display: flex;
+  flex: 1;
+}
+

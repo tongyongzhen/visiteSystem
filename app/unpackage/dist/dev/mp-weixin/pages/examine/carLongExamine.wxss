@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.item.data-v-95365510 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 18px;
+}
+.item .title.data-v-95365510 {
+  margin-left: 5px;
+}
+.item .content.data-v-95365510 {
+  margin-right: 5px;
+}
+.bottom.data-v-95365510 {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.image.data-v-95365510 {
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+

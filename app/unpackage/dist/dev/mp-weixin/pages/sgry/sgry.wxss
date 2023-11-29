@@ -1,0 +1,32 @@
+
+.container {
+	padding: 20px;
+	font-size: 14px;
+	line-height: 24px;
+	display: flex;
+	flex-direction: column;
+}
+.a{
+	font-size: 25px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.c{
+	font-size: 20px;
+	margin-top: 15px;
+}
+.d{
+	border: solid;
+	color: gray;
+	border-width: 1px;
+	border-radius: 5px;
+	margin-top: 10px;
+}
+.button{
+	margin-top: 50px;
+	width: 100px;
+	height: 50px;
+	background-color: lightslategray;
+}
+

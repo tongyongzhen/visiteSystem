@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.yonghu.data-v-7b1b54a6 {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 10rpx;
+  box-shadow: 0 0 2rpx #000000;
+}
+.image1.data-v-7b1b54a6 {
+  width: 90%;
+  height: 90%;
+  border-radius: 10rpx;
+  box-shadow: 0 0 2rpx #000000;
+}
+.image2.data-v-7b1b54a6 {
+  width: 70px;
+  height: 70px;
+  margin-top: 10px;
+}
+.image3.data-v-7b1b54a6 {
+  width: 20px;
+  height: 18px;
+}
+.item.data-v-7b1b54a6 {
+  font-size: 20px;
+  margin: 20px 30px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10rpx;
+  box-shadow: 0 0 2rpx #000000;
+}
+.item .left.data-v-7b1b54a6 {
+  width: 80px;
+}
+.item .right.data-v-7b1b54a6 {
+  margin-left: 10px;
+  display: flex;
+  flex: 1;
+}
+.item .label.data-v-7b1b54a6 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: auto 0;
+}
+.item .fail.data-v-7b1b54a6 {
+  background-color: red;
+}
+.item .success.data-v-7b1b54a6 {
+  background-color: green;
+}
+

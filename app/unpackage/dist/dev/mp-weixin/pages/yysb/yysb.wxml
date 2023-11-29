@@ -1,0 +1,1 @@
+<view><view class="a"><view class="_h1">很抱歉，预约失败</view></view><view class="b"><view class="c">点击下方按钮返回预约界面</view><button type="primary" data-event-opts="{{[['tap',[['fanhui',['$event']]]]]}}" bindtap="__e">返回</button></view></view>
