@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import visite_system.demo.Entity.*;
+import visite_system.demo.Pojo.CarPicture;
 import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.*;
 
@@ -64,19 +65,17 @@ public class Examine_Controller {
 
     @PostMapping("/CarLongPictureUp")
     @ApiOperation("长期物流司机货物照片上传")
-    public Result carLongPictureUp(HttpServletRequest request)throws Exception {
-        return carLongService.carLongPictureUp(request);
+    public Result carLongPictureUp(@RequestBody CarPicture carPicture)throws Exception {
+        return carLongService.carLongPictureUp(carPicture);
     }
 
-    @PostMapping("/carShortPictureUp")
+    @PostMapping("/CarShortPictureUp")
     @ApiOperation("短期物流司机货物照片上传")
-    public Result carShortPictureUp(@ApiParam(value = "传的是审批id不是登记id",required = true)
-                                   @NotNull(message = "id不能为空")
-                                           Long id, MultipartFile multipartFile)throws Exception {
-        return carShortService.carShortPictureUp(id,multipartFile);
+    public Result carShortPictureUp(@RequestBody CarPicture carPicture)throws Exception {
+        return carShortService.carShortPictureUp(carPicture);
     }
 
-    @GetMapping("/carShortPictureExamine")
+    @PostMapping("/carShortPictureExamine")
     @ApiOperation("短期物流司机货物审批")
     public Result carShortPictureExamine(
             @ApiParam("所有字段都要传")
@@ -84,7 +83,7 @@ public class Examine_Controller {
         return carShortService.carShortPictureExamine(carShortRecord);
     }
 
-    @GetMapping("/carLongPictureExamine")
+    @PostMapping("/carLongPictureExamine")
     @ApiOperation("长期物流司机货物审批")
     public Result carLongPictureExamine(
             @ApiParam("所有字段都要传")
@@ -92,7 +91,7 @@ public class Examine_Controller {
         return carLongService.carLongPictureExamine(carLongRecord);
     }
 
-    @GetMapping("/carShortBaoAnExamine")
+    @PostMapping("/carShortBaoAnExamine")
     @ApiOperation("短期物流司机保安审批")
     public Result carShortBaoAnExamine(
             @ApiParam("所有字段都要传")
@@ -100,7 +99,7 @@ public class Examine_Controller {
         return carShortService.carShortBaoAnExamine(carShortRecord);
     }
 
-    @GetMapping("/carLongBaoAnExamine")
+    @PostMapping("/carLongBaoAnExamine")
     @ApiOperation("长期物流司机保安审批")
     public Result carLongBaoAnExamine(
             @ApiParam("所有字段都要传")
@@ -112,6 +111,16 @@ public class Examine_Controller {
     @ApiOperation("查询我的审批")
     public Result queryMyExamine()throws Exception {
         return globalService.queryMyExamine();
+    }
+    @GetMapping("/queryLongPictureById/{id}")
+    @ApiOperation("查询长期货物照片")
+    public Result queryLongPictureById(@PathVariable("id") Long id)throws Exception {
+        return carLongService.queryLongPictureById(id);
+    }
+    @GetMapping("/queryShortPictureById/{id}")
+    @ApiOperation("查询短期货物照片")
+    public Result queryShortPictureById(@PathVariable("id") Long id)throws Exception {
+        return carShortService.queryShortPictureById(id);
     }
 
 

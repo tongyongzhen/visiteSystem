@@ -14,6 +14,7 @@ import visite_system.demo.GlobalUtils.QrCodeUtils;
 import visite_system.demo.GlobalUtils.ThreadLocalUtil;
 import visite_system.demo.Mapper.CarShort_AppointmentMapper;
 import visite_system.demo.Mapper.CarShort_RecordMapper;
+import visite_system.demo.Pojo.CarPicture;
 import visite_system.demo.Pojo.Result;
 import visite_system.demo.Service.CarShortService;
 
@@ -29,6 +30,7 @@ public class CarShortServiceImpl implements CarShortService {
 
     @Autowired
     private CarShort_RecordMapper carShortRecordMapper;
+
 
     @Autowired
     private QrCodeUtils qrCodeUtils;
@@ -49,34 +51,24 @@ public class CarShortServiceImpl implements CarShortService {
         String qrCode = qrCodeUtils.createQrCode(String.valueOf(one.getId()));
         one.setCode(qrCode);
         carShortAppointmentMapper.updateById(one);
+        CarShortRecord carShortRecord = CarShortRecord.builder()
+                .appointmentId(one.getId())
+                .build();
+        carShortRecordMapper.insert(carShortRecord);
         return Result.ok(one);
     }
 
     @Override
-    public Result carShortPictureUp(Long id, MultipartFile multipartFile) {
-        User user = ThreadLocalUtil.get();
-        //获取文件名
-        String fileName = multipartFile.getOriginalFilename();
-        //获取文件后缀名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        //重新生成文件名
-        fileName = UUID.randomUUID()+suffixName;
-        //指定本地文件夹存储图片，写到需要保存的目录下
-        String filePath = "E:\\ProjectStudy\\";
-        String newFileName=filePath+fileName;
-        try {
-            //将图片保存到static文件夹里
-            multipartFile.transferTo(new File(newFileName));
-            CarShortRecord carShortRecord = carShortRecordMapper.selectById(id);
-            carShortRecord.setPicture(newFileName);
-            carShortRecord.setCameramanId(user.getId());
-            carShortRecordMapper.updateById(carShortRecord);
-            //返回提示信息
-            return Result.ok();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Result.fail(500,e.getMessage());
-        }
+    public Result carShortPictureUp(CarPicture carPicture) {
+        Long id = carPicture.getId();
+        CarShortRecord carShortRecord = carShortRecordMapper.selectById(id);
+        //获取base64编码
+        String base64 = carPicture.getImage();
+        //组装
+        String picture="data:image/png;base64,"+base64;
+        carShortRecord.setPicture(picture);
+        carShortRecordMapper.updateById(carShortRecord);
+        return Result.ok();
     }
 
     @Override
@@ -93,6 +85,12 @@ public class CarShortServiceImpl implements CarShortService {
         carShortRecord.setBaoanId(user.getId());
         carShortRecordMapper.updateById(carShortRecord);
         return Result.ok();
+    }
+
+    @Override
+    public Result queryShortPictureById(Long id) {
+        CarShortRecord carShortRecord = carShortRecordMapper.selectById(id);
+        return Result.ok(carShortRecord.getPicture());
     }
 
 }

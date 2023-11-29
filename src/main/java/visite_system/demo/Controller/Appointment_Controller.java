@@ -81,4 +81,10 @@ public class Appointment_Controller {
     public Result queryCodeById(@PathVariable("id") Long id){
         return globalService.queryCodeById(id);
     }
+
+    @GetMapping("/queryVisitMe")
+    @ApiOperation("查询访问我的")
+    public Result queryVisitMe() throws Exception {
+        return globalService.queryVisitMe();
+    }
 }

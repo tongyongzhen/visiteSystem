@@ -8,4 +8,6 @@ public interface GlobalService {
     Result queryCodeById(Long id);
 
     Result queryMyExamine() throws Exception;
+
+    Result queryVisitMe() throws Exception;
 }

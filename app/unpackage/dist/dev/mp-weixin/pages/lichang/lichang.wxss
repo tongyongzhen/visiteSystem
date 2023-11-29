@@ -1,0 +1,22 @@
+
+.b{
+	text-align: center;
+	margin-top: 70px;
+	font-size: 22px;
+}
+.c{
+	text-align: center;
+	margin-top: 10px;
+}
+.image2{
+	width: 200px;
+	height: 200px;
+	margin-top: 10px;
+}
+.button{
+	margin-top: 100px;
+	width: 100px;
+	height: 50px;
+	background-color: lightslategray;
+}
+

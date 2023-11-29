@@ -1,0 +1,29 @@
+
+.container {
+	padding: 20px;
+	font-size: 14px;
+	line-height: 24px;
+}
+.title{
+	color: seagreen;
+	text-align: center;
+}
+.a{
+	display: flex;
+	justify-content: space-between;
+	color: seagreen;
+	text-align: center;
+	margin-top: 20px;
+}
+.c{
+	font-size: 20px;
+	margin-top: 10px;
+	box-shadow:0 0 2rpx #000000;
+}
+.no{
+	display: flex;justify-content: center;
+	margin-top: 50px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #c6c6c6;
+}
+

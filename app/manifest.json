@@ -56,22 +56,21 @@
         },
         "usingComponents" : true
     },
-    "vueVersion" : "2",
-	
-	"h5": {
-		"devServer" : {
-			"port": 8088,
-			"https" : false,
-			"proxy": {  
-				"/web": {  
-					"target": "http://localhost:90/",
-					"changeOrigin": true,   
-					"secure": false,
-					"pathRewrite": {
-						"^/web": "/"  
-					}  
-				}  
-			}  
-		}
-	}
+    "vueVersion" : "2"
+    // "h5" : {
+    //     "devServer" : {
+    //         "port" : 8088,
+    //         "https" : false,
+    //         "proxy" : {
+    //             "/web" : {
+    //                 "target" : "http://10.160.47.139:90/",
+    //                 "changeOrigin" : true,
+    //                 "secure" : false,
+    //                 "pathRewrite" : {
+    //                     "^/web" : "/"
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }

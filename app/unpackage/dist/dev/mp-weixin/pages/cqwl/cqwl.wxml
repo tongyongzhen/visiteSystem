@@ -1,0 +1,1 @@
+<view class="container"><view class="a">登记界面</view><view><button class="button" type="primary" data-event-opts="{{[['tap',[['yuyue',['$event']]]]]}}" bindtap="__e">登记</button></view></view>

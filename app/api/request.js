@@ -218,20 +218,61 @@ export function carLongPictureUp(data){
 		data:data
 	})
 }
-//上传图片
-export function uploadFile(file){
-	return uni.uploadFile({
-		url:"http://localhost:90/Examine/CarLongPictureUp",
-		filePath:file.path,
-		name:"file",
-		formData:{
-			targetId: new Date().valueOf(),
-			filePath: file.path
-			}
-		
+//短期建筑工人图片上传
+export function carShortPictureUp(data){
+	return axios({
+		url:"/web/Examine/CarShortPictureUp",
+		method:"post",
+		data:data
 	})
-
 }
+//长期建筑工人部门审批
+export function carLongPictureExamine(data){
+	return axios({
+		url:"/web/Examine/carLongPictureExamine",
+		method:"post",
+		data:data
+	})
+}
+//短期建筑工人部门审批
+export function carShortPictureExamine(data){
+	return axios({
+		url:"/web/Examine/carShortPictureExamine",
+		method:"post",
+		data:data
+	})
+}
+//短期建筑工人保安审批
+export function carShortBaoAnExamine(data){
+	return axios({
+		url:"/web/Examine/carShortBaoAnExamine",
+		method:"post",
+		data:data
+	})
+}
+//长期建筑工人保安审批
+export function carLongBaoAnExamine(data){
+	return axios({
+		url:"/web/Examine/carLongBaoAnExamine",
+		method:"post",
+		data:data
+	})
+}
+//获取长期货物图片
+export function queryLongPictureById(id){
+	return axios({
+		url:"/web/Examine/queryLongPictureById/"+id,
+		method:"get"
+	})
+}
+//获取短期货物图片
+export function queryShortPictureById(id){
+	return axios({
+		url:"/web/Examine/queryShortPictureById/"+id,
+		method:"get"
+	})
+}
+
 
 
 

@@ -1,0 +1,22 @@
+
+.item{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+	font-size: 18px;
+
+
+}
+.title{
+  margin-left: 5px;
+}
+.content{
+  margin-right: 5px;
+}
+.bottom{
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-around;
+}
+
+

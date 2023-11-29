@@ -36,7 +36,8 @@
 				data:{
 					password:undefined,
 					phone:undefined
-				}
+				},
+				count:0
 				
 			}
 		},
@@ -50,6 +51,7 @@
 				})
 
 				login(this.data).then(resp=>{
+
 					if(resp.data.code==200){				
 						sessionStorage.setItem("token",resp.data.data)
 						uni.showToast({
@@ -63,12 +65,21 @@
 							})
 						},1500)
 					}
+				}).catch(rep=>{
+					uni.showToast({
+						title:"出错"
+					})
 				})
 			},
-			change(){
+			change(a){
+				var url="../../static/j.mp3"
+				if(this.data.phone.length<this.count.length){
+					url="../../static/a.mp3"
+				}
+				this.count=this.data.phone
 				const v=uni.createInnerAudioContext();
 				v.autoplay=true
-				v.src="../../static/j.mp3"
+				v.src=url
 				v.onError(resp=>{
 					console.log(resp)
 				})

@@ -1,0 +1,17 @@
+
+.a{
+	color: red;
+	margin-top: 100px;
+	text-align: center;
+}
+.b{
+	margin-top: 150px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+.c{
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
