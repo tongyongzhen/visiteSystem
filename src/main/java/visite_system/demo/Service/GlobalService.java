@@ -10,4 +10,6 @@ public interface GlobalService {
     Result queryMyExamine() throws Exception;
 
     Result queryVisitMe() throws Exception;
+
+    Result goin(Long id);
 }

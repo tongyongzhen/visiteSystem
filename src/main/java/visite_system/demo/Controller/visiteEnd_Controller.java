@@ -33,6 +33,9 @@ public class visiteEnd_Controller {
     @Autowired
     private BuildService buildService;
 
+    @Autowired
+    private GlobalService globalService;
+
     @GetMapping(value = "/commonVisiteEnd/{id}")
     @ApiOperation("普通访客访问结束")
     public Result commonVisiteEnd(@NotNull(message = "id不能为空")
@@ -43,8 +46,14 @@ public class visiteEnd_Controller {
     @GetMapping(value = "/vipVisiteEnd/{id}")
     @ApiOperation("vip访客访问结束")
     public Result vipVisiteEnd(@NotNull(message = "id不能为空")
-                                @ApiParam(value = "传的是vip预约id",required = true)
+                                @ApiParam(value = "传的是vip审批id",required = true)
                                   @PathVariable("id") Long id) throws Exception {
         return vipService.vipVisiteEnd(id);
+    }
+
+    @GetMapping(value = "/goin/{id}")
+    @ApiOperation("模拟扫码进入")
+    public Result goin(@PathVariable("id") Long id) throws Exception {
+        return globalService.goin(id);
     }
 }

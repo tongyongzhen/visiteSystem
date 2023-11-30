@@ -30,5 +30,6 @@
         on e.appointment_id=a.id
         where a.visite_employee_id=#{id}
         and e.code is not null
+        and e.isgo is null
     </select>
 </mapper>

@@ -48,6 +48,9 @@ public class GlobalServiceImpl implements GlobalService {
     @Autowired
     private DeptMapper deptMapper;
 
+    @Autowired
+    private EnterRecordMapper enterRecordMapper;
+
     @Override
     public Result queryMyAppointment() {
         User user = ThreadLocalUtil.get();
@@ -199,14 +202,54 @@ public class GlobalServiceImpl implements GlobalService {
         LambdaQueryWrapper<CommonAppointment> commonAppointmentLambdaQueryWrapper = new LambdaQueryWrapper<>();
         commonAppointmentLambdaQueryWrapper
                 .eq(CommonAppointment::getVisiteEmployeeId,user.getId())
-                .eq(CommonAppointment::getIsagree,0);                ;
+                .eq(CommonAppointment::getIsagree,0)
+                .eq(CommonAppointment::getIsgo,null);                ;
         List<CommonAppointment> commonAppointments = commonAppointmentMapper.selectList(commonAppointmentLambdaQueryWrapper);
         //vip访客
         List<VipExamineInfo> vipExamineInfos = vipAppointmentMapper.queryVisitMe(user.getId());
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("0",commonAppointments);
         hashMap.put("1",vipExamineInfos);
-        return Result.ok(vipExamineInfos);
+        return Result.ok(hashMap);
     }
+
+    @Override
+    public Result goin(Long id) {
+        User user = ThreadLocalUtil.get();
+        //普通访客
+        if(user.getType()==0){
+            CommonAppointment commonAppointment = commonAppointmentMapper.selectById(id);
+            commonAppointment.setIsvisite(0);
+            commonAppointmentMapper.updateById(commonAppointment);
+
+        }else if(user.getType()==2){
+            //长期物流
+            CarLongRecord carLongRecord = carLongRecordMapper.selectById(id);
+            carLongRecord.setEnterTime(new Date());
+            carLongRecordMapper.updateById(carLongRecord);
+
+        }else if(user.getType()==3){
+            //短期物流
+            CarShortRecord carShortRecord = carShortRecordMapper.selectById(id);
+            carShortRecord.setEnterTime(new Date());
+            carShortRecordMapper.updateById(carShortRecord);
+
+        }else if(user.getType()==4){
+            //施工
+            BuildAppointment buildAppointment = buildAppointmentMapper.selectById(id);
+            buildAppointment.setIsvisite(0);
+            buildAppointmentMapper.updateById(buildAppointment);
+
+        }
+
+        //插入数据
+        EnterRecord enterRecord = new EnterRecord();
+        enterRecord.setUserId(user.getId());
+        enterRecord.setEnterTime(new Date());
+        enterRecord.setCarnum(user.getCarnum());
+        enterRecordMapper.insert(enterRecord);
+        return Result.ok();
+    }
+
 
 }

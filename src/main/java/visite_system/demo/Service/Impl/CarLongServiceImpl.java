@@ -90,8 +90,11 @@ public class CarLongServiceImpl implements CarLongService {
     @Override
     public Result carLongBaoAnExamine(CarLongRecord carLongRecord) {
         User user = ThreadLocalUtil.get();
-        carLongRecord.setExamineId(user.getId());
-        carLongRecordMapper.updateById(carLongRecord);
+        CarLongRecord carLongRecord1 = carLongRecordMapper.selectById(carLongRecord.getId());
+        carLongRecord1.setBaoanId(user.getId());
+        carLongRecord1.setBaoanResult(carLongRecord.getBaoanResult());
+        carLongRecord1.setGoTime(new Date());
+        carLongRecordMapper.updateById(carLongRecord1);
         return Result.ok();
     }
 

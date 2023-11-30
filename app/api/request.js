@@ -273,6 +273,37 @@ export function queryShortPictureById(id){
 	})
 }
 
+//查询访问我的
+export function queryVisitMe(){
+	return axios({
+		url:"/web/Appointment/queryVisitMe",
+		method:"get"
+	})
+}
+//普通访客结束
+export function commonVisiteEnd(id){
+	return axios({
+		url:"/web/visiteEnd/commonVisiteEnd/"+id,
+		method:"get"
+	})
+}
+//vip访客结束
+export function vipVisiteEnd(id){
+	return axios({
+		url:"/web/visiteEnd/vipVisiteEnd/"+id,
+		method:"get"
+	})
+}
+//访客扫码进入
+export function goin(id){
+	return axios({
+		url:"/web/visiteEnd/goin/"+id,
+		method:"get"
+	})
+}
+
+
+
 
 
 

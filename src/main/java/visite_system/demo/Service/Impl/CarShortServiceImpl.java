@@ -74,16 +74,21 @@ public class CarShortServiceImpl implements CarShortService {
     @Override
     public Result carShortPictureExamine(CarShortRecord carShortRecord) {
         User user = ThreadLocalUtil.get();
-        carShortRecord.setExamineId(user.getId());
-        carShortRecordMapper.updateById(carShortRecord);
+        CarShortRecord carShortRecord1 = carShortRecordMapper.selectById(carShortRecord.getId());
+        carShortRecord1.setExamineId(user.getId());
+        carShortRecord1.setExamineResult(carShortRecord.getExamineResult());
+        carShortRecordMapper.updateById(carShortRecord1);
         return Result.ok();
     }
 
     @Override
     public Result carShortBaoAnExamine(CarShortRecord carShortRecord) {
         User user = ThreadLocalUtil.get();
-        carShortRecord.setBaoanId(user.getId());
-        carShortRecordMapper.updateById(carShortRecord);
+        CarShortRecord carShortRecord1 = carShortRecordMapper.selectById(carShortRecord.getId());
+        carShortRecord1.setBaoanId(user.getId());
+        carShortRecord1.setBaoanResult(carShortRecord.getBaoanResult());
+        carShortRecord1.setGoTime(new Date());
+        carShortRecordMapper.updateById(carShortRecord1);
         return Result.ok();
     }
 

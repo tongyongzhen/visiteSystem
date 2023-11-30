@@ -101,9 +101,7 @@ public class VIPServiceImpl implements VIPService {
 
     @Override
     public Result vipVisiteEnd(Long id) {
-        LambdaUpdateWrapper<VipExamine> wrapper = new LambdaUpdateWrapper<>();
-        wrapper.eq(VipExamine::getAppointmentId,id);
-        VipExamine vipExamine = vipExamineMapper.selectOne(wrapper);
+        VipExamine vipExamine = vipExamineMapper.selectById(id);
         vipExamine.setIsgo(0);
         vipExamineMapper.updateById(vipExamine);
         return Result.ok();

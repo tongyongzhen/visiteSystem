@@ -1,35 +1,58 @@
 <template>
 	<view class="container">
 		<view class="title"><h1>访问记录</h1></view>
-		<view class="no" v-if="list.length==0">没有任何访问记录</view>
-		<view class="c" v-for="(p,index) in list" :key="index">
-			<view @click="yy(p)" class="a">
-				<view>{{"访问"}}{{index+1}}</view>
-				<view>{{p.appointTime}}</view>
-			
+		<view class="no" v-if="have">没有任何访问记录</view>
+		<view v-for="(list,type) in visiteList">
+			<view class="item" v-for="item in list" @click="toDetail(type,item)">
+				<view class="title">
+					<view class="content">{{visitType(type)}}</view>
+				</view>
+				<view class="time">{{item.appointTime}}</view>
 			</view>
 		</view>
 	</view>
 </template>
 
 <script>
-	import {cxyy} from '../../api/request.js'
+	import {cxyy,queryVisitMe} from '../../api/request.js'
 	export default {
 		onShow() {
-			cxyy().then(resp=>{
-				 this.list=resp.data.data
+			queryVisitMe().then(resp=>{
+				 this.visiteList=resp.data.data
+				 if(this.visiteList["0"].length==0 && this.visiteList["1"].length==0 ){
+					 this.have=true
+				 }
+
 			})
 		},
 		data() {
 			return {
-				list:[]
+				visiteList:{},
+				have:false
 			}
 		},
 		methods: {
-			yy(details){
+			visitType(type){
+					  switch(type){
+						  case "0":
+							return "普通"
+							break;
+						  case "1":
+							return "vip"
+							break;
+						  
+					  }
+			},
+			
+			toDetail(type,data){
 				uni.navigateTo({
-					url:"/pages/fyyxx/fyyxx?details="+JSON.stringify(details)+"&code="+details.code
+					url:"/pages/visitMe/visiteMe?data="+JSON.stringify({
+						type:type,
+						data:data
+					})
 				})
+					
+				
 			}
 		}
 	}
@@ -63,5 +86,27 @@
 		margin-top: 50px;
 		padding-bottom: 10px;
 		border-bottom: 1px solid #c6c6c6;
+	}
+	
+	.item{
+		display: flex;
+		justify-content: space-between;
+		box-shadow:0 0 2rpx #000000;
+		align-items: center;
+		margin-top: 10px;
+		.title{
+			width: 50px;
+			height: 50px;
+			background-color: #00aaff;
+			text-align: center;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.content{
+				color: aliceblue;
+				font-size: 20px;
+			}
+		
+		}
 	}
 </style>

@@ -27,7 +27,10 @@
 		<view class="image" v-else>
 			<image style="height: 100%;width: 100%;" :src="picture"></image>
 		</view>
-		<view class="bottom"  v-if="examineInfo.picture==null">
+		<view class="bottom"  v-if="examineInfo.examineResult==null && loginUser.deptId==6">
+			<button type="primary" @click="isagree(0)">放行</button>
+		</view>
+		<view class="bottom"  v-if="examineInfo.picture!=null && examineInfo.baoanResult==null && loginUser.deptId==5">
 			<button type="primary" @click="isagree(0)">放行</button>
 		</view>
 		
@@ -35,7 +38,7 @@
 </template>
 
 <script>
-	import {queryUserById,commonExamine,carShortPictureUp,carShortPictureExamine,queryShortPictureById} from "../../api/request.js"
+	import {queryUserById,commonExamine,carShortPictureUp,carShortPictureExamine,queryShortPictureById,carShortBaoAnExamine,ofMe} from "../../api/request.js"
 	export default {
 		onLoad(data) {
 			this.examineInfo=JSON.parse(data.data)
@@ -43,12 +46,16 @@
 				this.userInfo=resp.data.data
 			})
 			this.queryShortPictureById(this.examineInfo.id)
+			ofMe().then(resp=>{
+				this.loginUser=resp.data.data
+			})
 		},
 		data() {
 			return {
 				examineInfo:{},
 				userInfo:{},
-				picture:null
+				picture:null,
+				loginUser:{}
 			}
 		},
 		methods: {
@@ -79,27 +86,44 @@
 			},
 			
 			isagree(opinion){
-				if(this.picture==null || this.picture==''){
-					uni.showToast({
-						icon:"none",
-						title:"请先上传图片"
-					})
-					return
-				}
-				this.upload(this.picture)
-				this.examineInfo.examineResult=opinion
-				carShortPictureExamine(this.examineInfo).then(resp=>{
-					if(resp.data.code==200){
+				if(this.loginUser.deptId==6){
+					if(this.picture==null || this.picture==''){
 						uni.showToast({
-							icon:"success",
-							title:"审批成功"
+							icon:"none",
+							title:"请先上传图片"
 						})
-						setTimeout(resp=>{
-							this.$router.go(-1)
-						},1000)
-						
+						return
 					}
-				})
+					this.upload(this.picture)
+					this.examineInfo.examineResult=opinion
+					carShortPictureExamine(this.examineInfo).then(resp=>{
+						if(resp.data.code==200){
+							uni.showToast({
+								icon:"success",
+								title:"审批成功"
+							})
+							setTimeout(resp=>{
+								this.$router.go(-1)
+							},1000)
+							
+						}
+					})
+				}else{
+					//baoan
+					this.examineInfo.baoanResult=opinion
+					carShortBaoAnExamine(this.examineInfo).then(resp=>{
+						if(resp.data.code==200){
+							uni.showToast({
+								icon:"success",
+								title:"审批成功"
+							})
+							setTimeout(resp=>{
+								this.$router.go(-1)
+							},1000)
+							
+						}
+					})
+				}
 			},
 			select(img){
 				this.picture=img

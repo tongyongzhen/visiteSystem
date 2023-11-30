@@ -6,7 +6,7 @@
 		</view>
 		<view class="item" v-if="loginUser.type==0 || loginUser.type==4">
 			<view class="title">访问的人员</view>
-			<view class="content">{{name}}</view>
+			<view class="content">{{userName}}</view>
 		</view>
 		<view class="item" v-if="loginUser.type==0">
 			<view class="title">访问开始时间</view>
@@ -38,12 +38,14 @@
 		
 		<view class="code" v-if="isShow">
 			<image :src="code" style="height: 100%;width: 100%;" ></image>
+			<button style="margin-top: 10px;" type="primary" @click="goin">进入</button>
+			<button style="margin-top: 10px;" type="primary" @click="goout">离厂</button>
 		</view>
 	</view>
 </template>
 
 <script>
-	import {ofMe,queryDeptById,queryUserById,queryCodeById} from "../../api/request.js"
+	import {ofMe,queryDeptById,queryUserById,queryCodeById,goin} from "../../api/request.js"
 	export default {
 		onLoad(options) {
 			this.appointmentData=JSON.parse(options.details)
@@ -115,6 +117,20 @@
 					this.code=resp.data.data
 				})
 				this.isShow=true
+			},
+			goin(){
+				goin(this.appointmentData.id).then(resp=>{
+					if(resp.data.code==200){
+						uni.showToast({
+							title:"进入成功"
+						})
+					}
+				})
+			},
+			goout(){
+				uni.showToast({
+					title:"离场成功"
+				})
 			}
 		}
 	}
@@ -154,8 +170,12 @@
 	
 	.code{
 		margin: 20px auto;
-		width: 200px;
-		height: 200px;
+		width: 300px;
+		height:300px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 	}
 	
 </style>
